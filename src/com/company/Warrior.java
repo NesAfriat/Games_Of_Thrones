@@ -3,9 +3,9 @@ package com.company;
 public class Warrior extends Player {
     OurPair cooldown;//<abilityCooldown,remainingCooldown>
 
-    public Warrior(String name,int healthPool,int attackPoints, int defensePoints,int abillityCooldown)
+    public Warrior(char type,OurPair position,String name,int healthPool,int attackPoints, int defensePoints,int abillityCooldown)
     {
-        super(name, healthPool, attackPoints, defensePoints);
+        super(type,position,name, healthPool, attackPoints, defensePoints);
         super.abilityRange=3;
         this.cooldown=new OurPair(abillityCooldown,0);
 

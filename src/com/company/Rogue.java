@@ -5,8 +5,8 @@ public class Rogue extends Player {
     OurPair energy;//<energyPool,currentEnergy>
     int abilityCost;
 
-    public Rogue(String name,int healthPool,int attackPoints, int defensePoints,int abilityCost){
-        super(name, healthPool, attackPoints, defensePoints);
+    public Rogue(char type,OurPair position,String name,int healthPool,int attackPoints, int defensePoints,int abilityCost){
+        super(type,position,name, healthPool, attackPoints, defensePoints);
         this.energy=new OurPair(100,100);
         this.abilityCost=abilityCost;
         abilityRange=2;

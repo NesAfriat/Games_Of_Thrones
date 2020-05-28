@@ -3,13 +3,12 @@ package com.company;
 import com.company.Unit;
 
 public abstract class Player extends Unit {
-
     int exp;
     int playerLevel;
     int abilityRange;
 
-    public Player(String name,int healthPool,int attackPoints, int defensePoints) {
-        super(name, healthPool, attackPoints, defensePoints);
+    public Player(char type,OurPair position,String name,int healthPool,int attackPoints, int defensePoints) {
+        super(type,position,name, healthPool, attackPoints, defensePoints);
         exp = 0;
         playerLevel = 1;
 

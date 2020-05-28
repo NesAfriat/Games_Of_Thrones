@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="65775d57-8932-4f84-a84a-0f9d9544fc1e" name="Default Changelist" comment="" />
+    <list default="true" id="65775d57-8932-4f84-a84a-0f9d9544fc1e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/company/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Empty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Empty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/GameBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Mage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Mage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Monster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Rogue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Rogue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Tile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Trap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Trap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Unit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Unit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Wall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Wall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Warrior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Warrior.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +35,12 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1cMZSGzTJ2JhsJELlMYeDYpfh9n" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
   </component>
@@ -39,13 +60,18 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="com.company.Main" />
       <module name="hw3" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="PROGRAM_PARAMETERS" value="C:\Users\nes_afriat\Desktop\Principles\hw3\Repository\Ekronot\gamelevels" />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -58,10 +84,22 @@
       <option name="presentableId" value="Default" />
       <updated>1590340420971</updated>
       <workItem from="1590340426343" duration="5731000" />
+      <workItem from="1590670632888" duration="6612000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

@@ -5,8 +5,8 @@ import javafx.util.Pair;
 
 public class Tile {
     private char tile;
-    private Pair<int,int> position;
-    public Tile(char type, Pair<int,int> position)
+    private OurPair position;
+    public Tile(char type, OurPair position)
     {
         this.tile=type;
         this.position= position;

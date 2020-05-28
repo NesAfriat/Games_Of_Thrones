@@ -3,7 +3,7 @@ package com.company;
 import javafx.util.Pair;
 
 public class Empty extends Tile {
-    public Empty(Pair<int, int> position) {
+    public Empty(OurPair position) {
         super('.', position);
     }
 }

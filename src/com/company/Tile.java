@@ -1,7 +1,7 @@
 package com.company;
 
 
-import javafx.util.Pair;
+
 
 public class Tile {
     private char tile;
@@ -14,5 +14,9 @@ public class Tile {
     public String toString()
     {
         return String.valueOf(this.tile);
+    }
+    public void setPosition(OurPair position)
+    {
+        this.position=position;
     }
 }

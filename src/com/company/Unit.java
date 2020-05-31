@@ -1,6 +1,6 @@
 package com.company;
 
-import javafx.util.Pair;
+
 
 public abstract class Unit extends Tile {
     protected String name;
@@ -15,4 +15,17 @@ public abstract class Unit extends Tile {
         this.attackPoints=attackPoints;
         this.defensePoints=defensePoints;
     }
+
+    public void attack(Player player,Enemy enemy)
+    {
+        //player roll attack points
+        //enemy roll defense ponits
+    }
+    public void attack(Enemy enemy,Player player)
+    {
+        //player roll attack points
+        //enemy roll defense ponits
+    }
+
+
 }

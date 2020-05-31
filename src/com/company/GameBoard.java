@@ -2,18 +2,23 @@ package com.company;
 
 public class GameBoard {
     private Tile[][] gameBoard;
+    private GameController gc;
 
-    public GameBoard(char[][] level) {
+    public GameBoard(char[][] level,GameController gc) {
         this.gameBoard = NextLevel(level);
+        this.gc=gc;
     }
-
     private Tile[][] NextLevel(char[][] nextlevel) {
         Tile[][] gameObjects = new Tile[nextlevel.length][nextlevel[0].length];
+        //Enemy[] enemies=new
         Tile tmp;
         for (int i = 0; i < nextlevel.length; i++)
             for (int j = 0; j < nextlevel[i].length; j++) {
                 char sign = nextlevel[i][j];
                 switch (sign) {
+                    case '@':
+                        tmp=gc.setPlayer(i,j);
+                        gameObjects[i][j]=tmp;
                     case '#': //game board objects
                         tmp = new Wall(new OurPair(i,j));
                         gameObjects[i][j] = tmp;

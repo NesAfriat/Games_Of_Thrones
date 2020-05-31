@@ -2,7 +2,7 @@ package com.company;
 
 import com.company.OurPair;
 import com.company.Player;
-import javafx.util.Pair;
+
 
 public class Mage extends Player {
 

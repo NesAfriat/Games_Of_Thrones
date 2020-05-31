@@ -14,7 +14,7 @@ public class Mage extends Player {
     public Mage(char type,OurPair position,String name,int healthPool,int attackPoints, int defensePoints,int manaPool,int manaCost,int spellPower,int hitsCount,int abilityRange)
     {
             super(type, position, name, healthPool, attackPoints, defensePoints);
-            this.mana = new OurPair(manaPool, (manaPool / 4));
+            this.mana = new OurPair((manaPool / 4),manaPool);
             this.manaCost = manaCost;
             this.spellPower = spellPower;
             this.hitsCount = hitsCount;
@@ -25,23 +25,23 @@ public class Mage extends Player {
     @Override
     public void levelUp() {
         super.levelUp();
-        mana.setFirst(mana.getFirst()+(25*playerLevel));
-        mana.setSecond(Math.min(mana.getSecond()+(mana.getFirst()/4),mana.getFirst()));
+        mana.setSecond(mana.getSecond()+(25*playerLevel));
+        mana.setFirst(Math.min(mana.getFirst()+(mana.getSecond()/4),mana.getSecond()));
         this.spellPower=this.spellPower+(10*playerLevel);
 
     }
 
     @Override
     public void onGameTick() {
-        mana.setSecond(Math.min(mana.getFirst(),mana.getSecond()+playerLevel));
+        mana.setFirst(Math.min(mana.getSecond(),mana.getFirst()+playerLevel));
     }
 
     @Override
     public void abilityCast() {
-        if (mana.getSecond()<manaCost)
+        if (mana.getFirst()<manaCost)
             System.out.println("Cant cast ability yet-need more mana");
         else{
-            mana.setSecond(mana.getSecond()-manaCost);
+            mana.setFirst(mana.getFirst()-manaCost);
             int hits=0;
             while (hits<hitsCount)//להוסיף תנאי שקיים אויב חי
             {

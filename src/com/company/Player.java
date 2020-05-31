@@ -17,8 +17,8 @@ public abstract class Player extends Unit {
     public void levelUp() {
         exp=exp-50*playerLevel;
         playerLevel=playerLevel+1;
-        health.setFirst(health.getFirst()+(10*playerLevel));
-        health.setSecond(health.getFirst());
+        health.setSecond(health.getSecond()+(10*playerLevel));
+        health.setFirst(health.getSecond());
         attackPoints=attackPoints+4*playerLevel;
         defensePoints=defensePoints+playerLevel;
     }
@@ -27,6 +27,6 @@ public abstract class Player extends Unit {
 
     @Override
     public String toString() {
-        return ("your level is:"+playerLevel+ " your health is:"+health.getSecond()+" out of "+health.getFirst()+" your attackP is: "+attackPoints+" your defenseP is: "+defensePoints);
+        return ("your level is:"+playerLevel+ " your health is:"+health.getFirst()+" out of "+health.getSecond()+" your attackP is: "+attackPoints+" your defenseP is: "+defensePoints);
     }
 }

@@ -14,7 +14,7 @@ public class Rogue extends Player {
 
     @Override
     public void onGameTick() {
-        energy.setSecond(Math.min(energy.getSecond()+10,100));
+        energy.setFirst(Math.min(energy.getFirst()+10,100));
     }
 
     @Override
@@ -26,10 +26,10 @@ public class Rogue extends Player {
 
     @Override
     public void abilityCast() {
-        if(energy.getSecond()<abilityCost)
+        if(energy.getFirst()<abilityCost)
             System.out.println("Cant cast ability yet-try eating energy bar");
         else {
-            energy.setSecond(energy.getSecond()-abilityCost);
+            energy.setFirst(energy.getFirst()-abilityCost);
             ////do attack
         }
     }

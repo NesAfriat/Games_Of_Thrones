@@ -30,4 +30,21 @@ public abstract class Player extends Unit {
         return ("your level is:"+playerLevel+ " your health is:"+health.getFirst()+" out of "+health.getSecond()+" your attackP is: "+attackPoints+" your defenseP is: "+defensePoints);
     }
 
+
+
+
+    public void accept(VisitorMovement movementVisitor,Player player)
+    {
+        movementVisitor.visit(this,player);
+    }
+    public void accept(VisitorMovement movementVisitor,Enemy enemy)
+    {
+        movementVisitor.visit(this,enemy);
+    }
+    public void accept (VisitorMovement movementVisitor,Tile tile)
+    {
+        movementVisitor.visit(this,tile);
+    }
+
+
 }

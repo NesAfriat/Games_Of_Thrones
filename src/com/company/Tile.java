@@ -19,4 +19,12 @@ public class Tile {
     {
         this.position=position;
     }
+
+    public char getTile() {
+        return tile;
+    }
+
+    public OurPair getPosition() {
+        return position;
+    }
 }

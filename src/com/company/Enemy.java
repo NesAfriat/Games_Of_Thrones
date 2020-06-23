@@ -1,7 +1,5 @@
 package com.company;
 
-import javafx.util.Pair;
-
 import java.util.HashMap;
 
 
@@ -18,5 +16,22 @@ public class Enemy extends Unit{
     }
     public int getExpValue() {
         return expValue;
+    }
+
+
+
+
+
+    public void accept(VisitorMovement movementVisitor,Player player)
+    {
+        movementVisitor.visit(this,player);
+    }
+    public void accept(VisitorMovement movementVisitor,Enemy enemy)
+    {
+        movementVisitor.visit(this,enemy);
+    }
+    public void accept (VisitorMovement movementVisitor,Tile tile)
+    {
+        movementVisitor.visit(this,tile);
     }
 }

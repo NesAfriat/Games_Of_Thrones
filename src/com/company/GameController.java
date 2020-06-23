@@ -14,7 +14,7 @@ public class GameController {
     public Player choosePlayer()
     {
         Scanner scanner=new Scanner(System.in);
-        System.out.println("Choose Player");//TODO fix the output
+        System.out.println("1-Jon snow\n 2-The hound\n 3-Melisandre\n 4-Thoros of Myr\n 5-Arya stark\n6-Bronn");
         int number=scanner.nextInt();
         Player res=null;
         switch (number){

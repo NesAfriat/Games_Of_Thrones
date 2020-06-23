@@ -1,6 +1,7 @@
 package com.company;
 
 
+import java.util.Random;
 
 public abstract class Unit extends Tile {
     protected String name;
@@ -16,15 +17,34 @@ public abstract class Unit extends Tile {
         this.defensePoints=defensePoints;
     }
 
-    public void attack(Player player,Enemy enemy)
+    public void attack(Enemy enemy) // player attacks,enemy defends
     {
+        Random random=new Random();
         //player roll attack points
-        //enemy roll defense ponits
+        int rollAttack=random.nextInt(this.attackPoints);
+        //enemy roll defense points
+        int rollDefense=random.nextInt(enemy.defensePoints);
+        int diff=rollAttack-rollDefense;
+
+        if (diff>0)
+        {
+            //
+        }
+
     }
-    public void attack(Enemy enemy,Player player)
+    public void attack(Player player)// enemy attacks,player defends
     {
+        Random random=new Random();
         //player roll attack points
-        //enemy roll defense ponits
+        int rollAttack=random.nextInt(this.attackPoints);
+        //enemy roll defense points
+        int rollDefense=random.nextInt(player.defensePoints);
+        int diff=rollAttack-rollDefense;
+
+        if (diff>0)
+        {
+            //
+        }
     }
 
 

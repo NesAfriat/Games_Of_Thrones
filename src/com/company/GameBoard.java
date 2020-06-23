@@ -1,12 +1,17 @@
 package com.company;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Observer;
+
 public class GameBoard {
     private Tile[][] gameBoard;
     private GameController gc;
 
     public GameBoard(char[][] level,GameController gc) {
-        this.gameBoard = NextLevel(level);
         this.gc=gc;
+        this.gameBoard = NextLevel(level);
+        gc.Run(getEnemies());
     }
     private Tile[][] NextLevel(char[][] nextlevel) {
         Tile[][] gameObjects = new Tile[nextlevel.length][nextlevel[0].length];
@@ -84,5 +89,16 @@ public class GameBoard {
             }
         return gameObjects;
     }
+    private List<MyObserver> getEnemies()
+    {
+        List<MyObserver> enemies=new LinkedList<MyObserver>();
+        for(int i=0; i<gameBoard.length;i++)
+            for(int j=0; j<gameBoard[i].length;j++)
+                if(gameBoard[i][j] instanceof MyObserver)
+                    enemies.add((MyObserver)gameBoard[i][j]);
+              return enemies;
+    }
+
+
 }
 //}

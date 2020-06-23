@@ -3,8 +3,10 @@ package com.company;
 import com.company.OurPair;
 import com.company.Player;
 
+import java.util.List;
 
-public class Mage extends Player {
+
+public class Mage extends Player implements MyObserver {
 
     OurPair mana;//<manaPool,currentMana>
     int manaCost;
@@ -52,5 +54,10 @@ public class Mage extends Player {
             }
 
         }
+    }
+
+    @Override
+    public void Update(List<MyObserver> characters) {
+
     }
 }

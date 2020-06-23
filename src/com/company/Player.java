@@ -2,7 +2,7 @@ package com.company;
 
 import com.company.Unit;
 
-public abstract class Player extends Unit {
+public abstract class Player extends Unit implements MyObserver {
     int exp;
     int playerLevel;
     int abilityRange;
@@ -29,7 +29,10 @@ public abstract class Player extends Unit {
     public String toString() {
         return ("your level is:"+playerLevel+ " your health is:"+health.getFirst()+" out of "+health.getSecond()+" your attackP is: "+attackPoints+" your defenseP is: "+defensePoints);
     }
-
+      public boolean isAlive()
+      {
+          return health.getFirst()!=0;
+      }
 
 
 

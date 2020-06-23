@@ -24,11 +24,7 @@ public class Main {
                     }
                     line++;
                 }
-                   GameBoard gb = new GameBoard(currentLevel);
-    //                 gc.choosePlayer;
-    //                 if (!gc.Run())
-     //                break;
-   //             }
+                   GameBoard gb = new GameBoard(currentLevel,gc);
             }
         }
         catch (IOException e)

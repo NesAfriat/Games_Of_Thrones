@@ -1,9 +1,10 @@
 package com.company;
 
 import java.util.HashMap;
+import java.util.List;
 
 
-public class Enemy extends Unit{
+public class Enemy extends Unit implements MyObserver{
     private int expValue;
     public Enemy(char type, OurPair position,int exp, String name,int health, int attackPoints, int defensePoints)
     {
@@ -33,5 +34,10 @@ public class Enemy extends Unit{
     public void accept (VisitorMovement movementVisitor,Tile tile)
     {
         movementVisitor.visit(this,tile);
+    }
+
+    @Override
+    public void Update(List<MyObserver> characters) {
+
     }
 }

@@ -2,7 +2,10 @@ package com.company;
 
 import javafx.util.Pair;
 
-public class Trap extends Enemy {
+import java.util.List;
+import java.util.Observer;
+
+public class Trap extends Enemy implements MyObserver {
     private int visibilityTime;
     private int inVisibilityTime;
     private int tickCount=0;
@@ -13,7 +16,11 @@ public class Trap extends Enemy {
         this.inVisibilityTime= inVisibilityTime;
         this.visibilityTime=visibilityTime;
         }
+    @Override
+    public void Action(List<MyObserver> characters) {
+
     }
+}
 
 
 

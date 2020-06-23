@@ -1,6 +1,10 @@
 package com.company;
 
-public class Rogue extends Player {
+import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
+
+public class Rogue extends Player implements MyObserver {
 
     OurPair energy;//<energyPool,currentEnergy>
     int abilityCost;
@@ -32,5 +36,10 @@ public class Rogue extends Player {
             energy.setFirst(energy.getFirst()-abilityCost);
             ////do attack
         }
+    }
+
+    @Override
+    public void Update(List<MyObserver> characters) {
+
     }
 }

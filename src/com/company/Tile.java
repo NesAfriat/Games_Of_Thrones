@@ -1,9 +1,9 @@
 package com.company;
 
 
+import java.util.List;
 
-
-public class Tile {
+public class Tile implements MyObserver{
     private char tile;
     private OurPair position;
     public Tile(char type, OurPair position)
@@ -26,5 +26,10 @@ public class Tile {
 
     public OurPair getPosition() {
         return position;
+    }
+
+    @Override
+    public void Action(GameBoard gb) {
+
     }
 }

@@ -19,10 +19,6 @@ public class Enemy extends Unit implements MyObserver{
         return expValue;
     }
 
-
-
-
-
     public void accept(VisitorMovement movementVisitor,Player player)
     {
         movementVisitor.visit(this,player);
@@ -36,8 +32,5 @@ public class Enemy extends Unit implements MyObserver{
         movementVisitor.visit(this,tile);
     }
 
-    @Override
-    public void Update(List<MyObserver> characters) {
 
-    }
 }

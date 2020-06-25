@@ -16,6 +16,10 @@ public abstract class Unit extends Tile {
         this.attackPoints=attackPoints;
         this.defensePoints=defensePoints;
     }
+    public boolean isAlive()
+    {
+        return health.getFirst()!=0;
+    }
 
     public void attack(Enemy enemy) // player attacks,enemy defends
     {

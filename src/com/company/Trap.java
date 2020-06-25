@@ -5,7 +5,7 @@ import javafx.util.Pair;
 import java.util.List;
 import java.util.Observer;
 
-public class Trap extends Enemy implements MyObserver {
+public class Trap extends Enemy  {
     private int visibilityTime;
     private int inVisibilityTime;
     private int tickCount=0;
@@ -16,9 +16,9 @@ public class Trap extends Enemy implements MyObserver {
         this.inVisibilityTime= inVisibilityTime;
         this.visibilityTime=visibilityTime;
         }
-    @Override
-    public void Action(List<MyObserver> characters) {
-
+   @Override
+    public void Action(GameBoard gb) {
+        VisitorMovement vm= new VisitorMovement();
     }
 }
 

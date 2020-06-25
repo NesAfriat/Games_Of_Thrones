@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.List;
+
 public class Warrior extends Player {
     OurPair cooldown;//<abilityCooldown,remainingCooldown>
 
@@ -25,7 +27,7 @@ public class Warrior extends Player {
     }
 
     @Override
-    public void abilityCast() {
+    public void abilityCast(List<MyObserver> enemies) {
         if (cooldown.getFirst()>0)
             System.out.println("Cant cast ability yet-not cool enough");
         else {
@@ -36,4 +38,6 @@ public class Warrior extends Player {
 
         }
     }
+
+
 }

@@ -2,7 +2,9 @@ package com.company;
 
 import com.company.Unit;
 
-public abstract class Player extends Unit implements MyObserver {
+import java.util.List;
+
+public abstract class Player extends Unit {
     int exp;
     int playerLevel;
     int abilityRange;
@@ -23,16 +25,13 @@ public abstract class Player extends Unit implements MyObserver {
         defensePoints=defensePoints+playerLevel;
     }
     public abstract void onGameTick();
-    public abstract void abilityCast();
+    public abstract void abilityCast(List<MyObserver> enemies);
 
     @Override
     public String toString() {
         return ("your level is:"+playerLevel+ " your health is:"+health.getFirst()+" out of "+health.getSecond()+" your attackP is: "+attackPoints+" your defenseP is: "+defensePoints);
     }
-      public boolean isAlive()
-      {
-          return health.getFirst()!=0;
-      }
+
 
 
 

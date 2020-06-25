@@ -22,14 +22,7 @@ public class Rogue extends Player implements MyObserver {
     }
 
     @Override
-    public void levelUp() {
-        super.levelUp();
-        energy.setSecond(100);
-        attackPoints=attackPoints+(3*playerLevel);
-    }
-
-    @Override
-    public void abilityCast() {
+    public void abilityCast(List<MyObserver> enemies) {
         if(energy.getFirst()<abilityCost)
             System.out.println("Cant cast ability yet-try eating energy bar");
         else {
@@ -39,7 +32,13 @@ public class Rogue extends Player implements MyObserver {
     }
 
     @Override
-    public void Update(List<MyObserver> characters) {
-
+    public void levelUp() {
+        super.levelUp();
+        energy.setSecond(100);
+        attackPoints=attackPoints+(3*playerLevel);
     }
+
+
+
+
 }

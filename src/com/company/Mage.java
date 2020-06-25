@@ -6,7 +6,7 @@ import com.company.Player;
 import java.util.List;
 
 
-public class Mage extends Player implements MyObserver {
+public class Mage extends Player {
 
     OurPair mana;//<manaPool,currentMana>
     int manaCost;
@@ -39,13 +39,13 @@ public class Mage extends Player implements MyObserver {
     }
 
     @Override
-    public void abilityCast() {
-        if (mana.getFirst()<manaCost)
+    public void abilityCast(List<MyObserver> enemies) {
+        if (mana.getFirst() < manaCost)
             System.out.println("Cant cast ability yet-need more mana");
-        else{
-            mana.setFirst(mana.getFirst()-manaCost);
-            int hits=0;
-            while (hits<hitsCount)//להוסיף תנאי שקיים אויב חי
+        else {
+            mana.setFirst(mana.getFirst() - manaCost);
+            int hits = 0;
+            while (hits < hitsCount)//להוסיף תנאי שקיים אויב חי
             {
                 ///////////
                 ///////////
@@ -54,10 +54,9 @@ public class Mage extends Player implements MyObserver {
             }
 
         }
-    }
-
-    @Override
-    public void Update(List<MyObserver> characters) {
 
     }
-}
+
+
+    }
+

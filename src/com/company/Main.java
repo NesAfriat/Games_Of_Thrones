@@ -16,7 +16,7 @@ public class Main {
             List<String> LevelFiles = Files.list(Paths.get(args[0])).sorted().map(Path::toString).collect(Collectors.toList());
             for(String levelPath : LevelFiles) {
                 levelData = Files.readAllLines(Paths.get(levelPath));
-                char[][]currentLevel= new char[levelPath.length()][levelData.size()];
+                char[][]currentLevel= new char[levelData.size()][levelData.get(0).length()];
                 int line= 0;
                 for (String s : levelData) {
                     for(int i=0; i<s.length(); i++) {
@@ -27,6 +27,10 @@ public class Main {
 
                    GameBoard gb = new GameBoard(currentLevel);
                     gc.setBoard(gb);
+                    gb.PrintBoard();
+                    gc.Run();
+                    if(gc.GameOver())
+                        break;
             }
         }
         catch (IOException e)

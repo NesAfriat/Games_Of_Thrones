@@ -24,7 +24,9 @@ public class Main {
                     }
                     line++;
                 }
-                   GameBoard gb = new GameBoard(currentLevel,gc);
+
+                   GameBoard gb = new GameBoard(currentLevel);
+                    gc.setBoard(gb);
             }
         }
         catch (IOException e)

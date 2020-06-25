@@ -7,7 +7,8 @@ import java.util.Scanner;
 public class GameController implements MyObserverable {
     private Player player;
     List<MyObserver> characters;
-    OurPair playerPosition;
+    //OurPair playerPosition;
+    GameBoard gb;
 
     public GameController(){
         characters= new LinkedList<MyObserver>();
@@ -63,32 +64,37 @@ public class GameController implements MyObserverable {
         }
         return res;
     }
-    public Player setPlayer(int i, int j)
-    {
-        player.setPosition(new OurPair(i,j));
-        return player;
-    }
+   // public Player setPlayer(int i, int j)
+    //{
+      //  player.setPosition(new OurPair(i,j));
+        //return player;
+    //}
     public void Run(List<MyObserver> enemiesList){
         this.characters= enemiesList;
         characters.add(player);
-        while(player.isAlive()&&!enemies.isEmpty())
+        while(player.isAlive()&&!characters.isEmpty())
         {
             GameTick();
         }
     }
     private void GameTick() {
+        VisitorMovement vm=new VisitorMovement();
         Scanner sc= new Scanner(System.in);
         char move =(char) sc.nextInt();
+        OurPair position=player.getPosition();
         switch (move) {
             case ('w'):  //move up
             {
+
                 //visitor.Move(playerLocation, playlcation(i,j-1)
+                vm.visit(player,gb.getTile(position.getFirst()-1,position.getSecond()));
                 PlayTheRest();
             }
             break;
             case ('s'): //move down
             {
                 //visitor.Move(playerLocation, playlcation(i,j+1)
+                vm.visit(player,gb.getTile(position.getFirst()+1,position.getSecond()));
                 PlayTheRest();
                 break;
             }
@@ -96,12 +102,14 @@ public class GameController implements MyObserverable {
             case ('a'): //move left
             {
                 //visitor.Move(playerLocation, playlcation(i-1,j)
+                vm.visit(player,gb.getTile(position.getFirst(),position.getSecond()-1));
                 PlayTheRest();
                 break;
             }
             case ('d'): //move right
             {
                 //visitor.Move(playerLocation, playlcation(i+1,j)
+                vm.visit(player,gb.getTile(position.getFirst(),position.getSecond()+1));
                 PlayTheRest();
                 break;
             }
@@ -130,6 +138,14 @@ public class GameController implements MyObserverable {
 
     @Override
     public void NotifyObservers() {
+
+    }
+
+    public void setBoard(GameBoard gb) {
+        this.gb=gb;
+        gb.setPlayer(player);
+        OurPair playerP=gb.getPlayerLoaction();
+        player.setPosition(playerP);
 
     }
 }

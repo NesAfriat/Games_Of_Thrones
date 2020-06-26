@@ -27,7 +27,14 @@ public class Rogue extends Player implements MyObserver {
             System.out.println("Cant cast ability yet-try eating energy bar");
         else {
             energy.setFirst(energy.getFirst()-abilityCost);
-            ////do attack
+            for (MyObserver mo:enemies)
+            {
+                Enemy emo=(Enemy)mo;
+                if (this.getPosition().Range(emo.getPosition())<3)
+                {
+                    this.attack(emo,attackPoints);
+                }
+            }
         }
     }
 

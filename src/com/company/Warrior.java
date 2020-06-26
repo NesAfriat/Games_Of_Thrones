@@ -1,6 +1,8 @@
 package com.company;
 
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 public class Warrior extends Player {
     OurPair cooldown;//<abilityCooldown,remainingCooldown>
@@ -14,7 +16,7 @@ public class Warrior extends Player {
     }
 
     @Override
-    public void levelUp() {/////////////ask tal
+    public void levelUp() {
         super.levelUp();
         cooldown.setFirst(0);
         health.setSecond(health.getSecond()+(5*playerLevel));
@@ -34,7 +36,21 @@ public class Warrior extends Player {
             cooldown.setFirst(cooldown.getSecond());
             health.setFirst(Math.min(health.getFirst()+(10*defensePoints),health.getSecond()));
 
-            /////////hit random enemy
+            LinkedList<MyObserver> releventEnemies=new LinkedList<>();//only enemies within range 3
+            for (MyObserver mo:enemies)
+            {
+                Enemy emo=(Enemy)mo;
+                if (this.getPosition().Range(emo.getPosition())<3)
+                {
+                    releventEnemies.add(mo);
+                }
+            }
+
+            Random random=new Random();
+            if (!releventEnemies.isEmpty()) {
+                Enemy randomEnemy = (Enemy) releventEnemies.get(random.nextInt(releventEnemies.size()));
+                this.attack(randomEnemy, health.getSecond() / 10);
+            }
 
         }
     }

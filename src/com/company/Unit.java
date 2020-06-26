@@ -21,7 +21,21 @@ public abstract class Unit extends Tile {
         return health.getFirst()>0;
     }
 
-    public void attack(Enemy enemy) // player attacks,enemy defends
+    public void attack(Enemy enemy, int hitPower) // player attacks,enemy defends
+    {
+        Random random=new Random();
+        //player roll attack points
+        int rollAttack=hitPower;
+        //enemy roll defense points
+        int rollDefense=random.nextInt(enemy.defensePoints);
+        int diff=rollAttack-rollDefense;
+
+        if (diff>0)
+        {
+            enemy.health.setFirst(enemy.health.getFirst()-diff);//check if enemy died
+        }
+    }
+    public void attack(Enemy enemy)
     {
         Random random=new Random();
         //player roll attack points
@@ -32,9 +46,8 @@ public abstract class Unit extends Tile {
 
         if (diff>0)
         {
-            //
+            enemy.health.setFirst(enemy.health.getFirst()-diff);//check if enemy died
         }
-
     }
     public void attack(Player player)// enemy attacks,player defends - combat system
     {
@@ -47,7 +60,7 @@ public abstract class Unit extends Tile {
 
         if (diff>0)
         {
-            //
+            player.health.setFirst(player.health.getFirst()-diff);//check if player died
         }
     }
 

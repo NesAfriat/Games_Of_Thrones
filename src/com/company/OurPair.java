@@ -25,4 +25,9 @@ public class OurPair {
     first=i;
     second=i1;
     }
+    public double Range (OurPair other){
+        double disx=Math.pow(this.getFirst()-other.getFirst(),2);
+        double disy=Math.pow(this.getSecond()-other.getSecond(),2);
+        return Math.sqrt(disx+disy);
+    }
 }

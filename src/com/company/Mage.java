@@ -3,7 +3,9 @@ package com.company;
 import com.company.OurPair;
 import com.company.Player;
 
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 
 public class Mage extends Player {
@@ -45,16 +47,29 @@ public class Mage extends Player {
         else {
             mana.setFirst(mana.getFirst() - manaCost);
             int hits = 0;
-            while (hits < hitsCount)//להוסיף תנאי שקיים אויב חי
+            LinkedList<MyObserver> releventEnemies=enemyInRange(enemies);
+            while (hits < hitsCount&!releventEnemies.isEmpty())
             {
-                ///////////
-                ///////////
-                //this.combatSystem.attack(randomenemy,spellPower);
+                Random random=new Random();
+                Enemy randomEnemy = (Enemy) releventEnemies.get(random.nextInt(releventEnemies.size()));
+                this.attack(randomEnemy,spellPower);
                 hits++;
             }
 
         }
-
+    }
+    private LinkedList<MyObserver> enemyInRange(List<MyObserver> enemies)
+    {
+        LinkedList<MyObserver> releventEnemies=new LinkedList<>();//only enemies within range 3
+        for (MyObserver mo:enemies)
+        {
+            Enemy emo=(Enemy)mo;
+            if (this.getPosition().Range(emo.getPosition())<abilityRange)
+            {
+                releventEnemies.add(mo);
+            }
+        }
+        return releventEnemies;
     }
 
 

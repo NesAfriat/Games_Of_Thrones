@@ -18,7 +18,7 @@ public abstract class Unit extends Tile {
     }
     public boolean isAlive()
     {
-        return health.getFirst()!=0;
+        return health.getFirst()>0;
     }
 
     public void attack(Enemy enemy) // player attacks,enemy defends
@@ -36,7 +36,7 @@ public abstract class Unit extends Tile {
         }
 
     }
-    public void attack(Player player)// enemy attacks,player defends
+    public void attack(Player player)// enemy attacks,player defends - combat system
     {
         Random random=new Random();
         //player roll attack points

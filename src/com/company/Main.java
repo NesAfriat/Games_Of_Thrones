@@ -24,10 +24,7 @@ public class Main {
                     }
                     line++;
                 }
-
-                   GameBoard gb = new GameBoard(currentLevel);
-                    gc.setBoard(gb);
-                    gb.PrintBoard();
+                    gc.NewLevel(currentLevel);
                     gc.Run();
                     if(gc.GameOver())
                         break;

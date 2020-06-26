@@ -29,7 +29,12 @@ public class Tile implements MyObserver{
     }
 
     @Override
-    public void Action(GameBoard gb) {
+    public void Action(GameBoard gb, Player p) {
 
+    }
+
+    @Override
+    public boolean IsAlive() {
+        return true;
     }
 }

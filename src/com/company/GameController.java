@@ -52,11 +52,19 @@ public class GameController implements MyObserverable {
                 break;
         }
     }
-   // public Player setPlayer(int i, int j)
-    //{
-      //  player.setPosition(new OurPair(i,j));
-        //return player;
-    //}
+    public void NewLevel(char[][] currentLevel) {
+        GameBoard gb = new GameBoard(currentLevel);
+        setBoard(gb);
+    }
+
+    private void setBoard(GameBoard gb) {
+        this.gb=gb;
+        gb.setPlayer(player);
+        OurPair playerP=gb.getPlayerLoaction();
+        player.setPosition(playerP);
+        enemies=gb.getEnemies();
+    }
+
     public void Run(){
         while(player.isAlive()&&!enemies.isEmpty())
         {
@@ -70,22 +78,18 @@ public class GameController implements MyObserverable {
         OurPair position = player.getPosition();
         switch (move) {
             case 'w':  //move up
-                //visitor.Move(playerLocation, playlcation(i,j-1)
                 vm.visit(player, gb.getTile(position.getFirst() - 1, position.getSecond()));
                 PlayTheRest(enemies);
                 break;
             case 's': //move down
-                //visitor.Move(playerLocation, playlcation(i,j+1)
                 vm.visit(player, gb.getTile(position.getFirst() + 1, position.getSecond()));
                 PlayTheRest(enemies);
                 break;
             case 'a': //move left
-                //visitor.Move(playerLocation, playlcation(i-1,j)
                 vm.visit(player, gb.getTile(position.getFirst(), position.getSecond() - 1));
                 PlayTheRest(enemies);
                 break;
             case 'd': //move right
-                //visitor.Move(playerLocation, playlcation(i+1,j)
                 vm.visit(player, gb.getTile(position.getFirst(), position.getSecond() + 1));
                 PlayTheRest(enemies);
                 break;
@@ -106,21 +110,19 @@ public class GameController implements MyObserverable {
     @Override
     public void PlayTheRest(List<MyObserver> enemies) {
         for(MyObserver o: enemies)
-            o.Action(gb);
-    }
-
-
-    public void setBoard(GameBoard gb) {
-        this.gb=gb;
-        gb.setPlayer(player);
-        OurPair playerP=gb.getPlayerLoaction();
-        player.setPosition(playerP);
-        enemies=gb.getEnemies();
+        {
+            if(!o.IsAlive())
+                removeObserver(o);
+            else
+            o.Action(gb,player);
+        }
 
     }
 
     public boolean GameOver() {
         return !player.isAlive();
     }
+
+
 }
 

@@ -9,7 +9,7 @@ public class Trap extends Enemy  {
     private int visibilityTime;
     private int inVisibilityTime;
     private int tickCount=0;
-    private boolean visible=false;
+    private boolean visible=true;
  //   private final int ABILITYRANGE=
     public Trap(char type, OurPair position,String name,int exp, int visibilityTime, int inVisibilityTime,int health, int attackPoints, int defensePoints) {
         super(type, position,exp, name,health , attackPoints,defensePoints);
@@ -17,8 +17,22 @@ public class Trap extends Enemy  {
         this.visibilityTime=visibilityTime;
         }
    @Override
-    public void Action(GameBoard gb) {
+    public void Action(GameBoard gb,Player player) {
         VisitorMovement vm= new VisitorMovement();
+        OurPair playerP= gb.getPlayerLoaction();
+        OurPair trapP= this.getPosition();
+        double range= Range(trapP,playerP);
+        visible = tickCount< visibilityTime;
+        if (tickCount == (visibilityTime+inVisibilityTime))
+            tickCount=0;
+        else
+            tickCount=tickCount+1;
+        if(range<2) //attack player
+            attack(player);
+    }
+
+    private double Range(OurPair position, OurPair playerLocation) {
+        return Math.sqrt(Math.pow(position.getFirst()-playerLocation.getFirst(),2)+Math.pow(position.getSecond()-playerLocation.getSecond(),2));
     }
 }
 

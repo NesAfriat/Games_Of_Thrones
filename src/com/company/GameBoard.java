@@ -7,7 +7,7 @@ import java.util.Observer;
 public class GameBoard {
     private Tile[][] gameBoard;
     LinkedList<MyObserver> enemies;
-    LinkedList<Enemy> Myenemies;
+    //LinkedList<Enemy> Myenemies;
     OurPair playerLoaction;
 
     public GameBoard(char[][] level) {
@@ -19,7 +19,7 @@ public class GameBoard {
     private Tile[][] NextLevel(char[][] nextlevel) {
         Tile[][] gameObjects = new Tile[nextlevel.length][nextlevel[0].length];
         enemies = new LinkedList<MyObserver>();
-        Myenemies=new LinkedList<>();
+       //Myenemies=new LinkedList<>();
         Tile tmp;
         for (int i = 0; i < nextlevel.length; i++)
             for (int j = 0; j < nextlevel[i].length; j++) {

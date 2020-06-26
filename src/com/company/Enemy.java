@@ -48,18 +48,22 @@ public class Enemy extends Unit implements MyObserver{
 
     }
 
-    public void attack(Player player)// enemy attacks,player defends - combat system
-    {
+    @Override
+    public void attack(Player player) {
         Random random=new Random();
         //player roll attack points
         int rollAttack=random.nextInt(this.attackPoints);
         //enemy roll defense points
         int rollDefense=random.nextInt(player.defensePoints);
         int diff=rollAttack-rollDefense;
-
         if (diff>0)
         {
-            player.health.setFirst(player.health.getFirst()-diff);//check if player died
+            player.health.setFirst(player.health.getFirst()-diff);
+            if (!player.isAlive())
+            {
+                ////
+            }
+
         }
     }
 }

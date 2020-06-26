@@ -63,7 +63,7 @@ public class Mage extends Player {
         LinkedList<MyObserver> releventEnemies=new LinkedList<>();//only enemies within range 3
         for (MyObserver mo:enemies)
         {
-            Enemy emo=(Enemy)mo;
+            Enemy emo=mo.getEnemy();
             if (this.getPosition().Range(emo.getPosition())<abilityRange)
             {
                 releventEnemies.add(mo);

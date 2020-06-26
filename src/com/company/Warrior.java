@@ -39,7 +39,7 @@ public class Warrior extends Player {
             LinkedList<MyObserver> releventEnemies=new LinkedList<>();//only enemies within range 3
             for (MyObserver mo:enemies)
             {
-                Enemy emo=(Enemy)mo;
+                Enemy emo=mo.getEnemy();
                 if (this.getPosition().Range(emo.getPosition())<3)
                 {
                     releventEnemies.add(mo);

@@ -29,7 +29,8 @@ public class Rogue extends Player implements MyObserver {
             energy.setFirst(energy.getFirst()-abilityCost);
             for (MyObserver mo:enemies)
             {
-                Enemy emo=(Enemy)mo;
+
+                Enemy emo=mo.getEnemy();
                 if (this.getPosition().Range(emo.getPosition())<3)
                 {
                     this.attack(emo,attackPoints);

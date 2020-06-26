@@ -3,13 +3,22 @@ package com.company;
 import com.company.Unit;
 
 import java.util.List;
+import java.util.Random;
 
 public abstract class Player extends Unit {
     int exp;
     int playerLevel;
     int abilityRange;
 
-    public Player(char type,OurPair position,String name,int healthPool,int attackPoints, int defensePoints) {
+    public int getExp() {
+        return exp;
+    }
+
+    public void setExp(int exp) {
+        this.exp = exp;
+    }
+
+    public Player(char type, OurPair position, String name, int healthPool, int attackPoints, int defensePoints) {
         super(type,position,name, healthPool, attackPoints, defensePoints);
         exp = 0;
         playerLevel = 1;
@@ -24,8 +33,13 @@ public abstract class Player extends Unit {
         attackPoints=attackPoints+4*playerLevel;
         defensePoints=defensePoints+playerLevel;
     }
+
     public abstract void onGameTick();
-    public abstract void abilityCast(List<MyObserver> enemies);
+
+
+
+    public void abilityCast(List<MyObserver> enemies)
+    {}
 
     @Override
     public String toString() {
@@ -48,5 +62,57 @@ public abstract class Player extends Unit {
         movementVisitor.visit(this,tile);
     }
 
+    public void attack(Enemy enemy, int hitPower) // player attacks,enemy defends
+    {
+        Random random=new Random();
+        //player roll attack points
+        int rollAttack=hitPower;
+        //enemy roll defense points
+        int rollDefense=random.nextInt(enemy.defensePoints);
+        int diff=rollAttack-rollDefense;
 
+        if (diff>0)
+        {
+            enemy.health.setFirst(enemy.health.getFirst()-diff);//check if enemy died
+
+            if (!enemy.isAlive()) {
+                this.exp += enemy.getExpValue();
+                if (this.exp >= 50) {
+                    this.levelUp();
+                }
+            }
+
+        }
+    }
+    public void attack(Enemy enemy)
+    {
+        Random random=new Random();
+        //player roll attack points
+        int rollAttack=random.nextInt(this.attackPoints);
+        //enemy roll defense points
+        int rollDefense=random.nextInt(enemy.defensePoints);
+        int diff=rollAttack-rollDefense;
+
+        if (diff>0)
+        {
+            enemy.health.setFirst(enemy.health.getFirst()-diff);
+            if (!enemy.isAlive())
+            {
+                this.exp+=enemy.getExpValue();
+                if (this.exp>=50)
+                {
+                    this.levelUp();
+                }
+                OurPair temp=enemy.getPosition();
+                enemy.setPosition(this.getPosition());
+                this.setPosition(temp);
+
+            }
+        }
+    }
+
+    @Override
+    public void attack(Player player) {
+
+    }
 }

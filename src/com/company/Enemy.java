@@ -2,6 +2,7 @@ package com.company;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 
 public class Enemy extends Unit implements MyObserver{
@@ -32,5 +33,33 @@ public class Enemy extends Unit implements MyObserver{
         movementVisitor.visit(this,tile);
     }
 
+    @Override
+    public Enemy getEnemy() {
+        return this;
+    }
 
+    @Override
+    public void attack(Enemy enemy, int hitpower) {
+
+    }
+
+    @Override
+    public void attack(Enemy enemy) {
+
+    }
+
+    public void attack(Player player)// enemy attacks,player defends - combat system
+    {
+        Random random=new Random();
+        //player roll attack points
+        int rollAttack=random.nextInt(this.attackPoints);
+        //enemy roll defense points
+        int rollDefense=random.nextInt(player.defensePoints);
+        int diff=rollAttack-rollDefense;
+
+        if (diff>0)
+        {
+            player.health.setFirst(player.health.getFirst()-diff);//check if player died
+        }
+    }
 }

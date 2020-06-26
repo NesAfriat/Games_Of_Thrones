@@ -1,7 +1,5 @@
 package com.company;
 
-import javafx.util.Pair;
-
 import java.util.List;
 
 public class Monster extends Enemy {

@@ -37,4 +37,9 @@ public class Tile implements MyObserver{
     public boolean IsAlive() {
         return true;
     }
+
+    @Override
+    public Enemy getEnemy() {
+        return null;
+    }
 }

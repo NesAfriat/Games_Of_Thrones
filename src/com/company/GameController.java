@@ -109,10 +109,15 @@ public class GameController implements MyObserverable {
 
     @Override
     public void PlayTheRest(List<MyObserver> enemies) {
+        player.onGameTick();
         for(MyObserver o: enemies)
         {
-            if(!o.IsAlive())
+            if(!o.IsAlive()) {
+                OurPair tmp=o.getEnemy().getPosition();
+                Tile e=new Empty(tmp);
+                gb.setTile(tmp,e);
                 removeObserver(o);
+            }
             else
             o.Action(gb,player);
         }

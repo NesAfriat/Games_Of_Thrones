@@ -23,9 +23,9 @@ public abstract class Unit extends Tile {
         return health.getFirst()>0;
     }
 
-   public abstract void attack (Enemy enemy,int hitpower);
-    public abstract void attack(Enemy enemy);
-   public abstract void attack (Player player);
+   public abstract void attack (Enemy enemy,int hitpower,GameBoard gb);
+    public abstract void attack(Enemy enemy,GameBoard gb);
+   public abstract void attack (Player player,GameBoard gb);
 
 
 }

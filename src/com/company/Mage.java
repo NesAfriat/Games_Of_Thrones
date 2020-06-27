@@ -42,7 +42,7 @@ public class Mage extends Player {
     }
 
     @Override
-    public void abilityCast(List<Enemy> enemies) {
+    public void abilityCast(List<Enemy> enemies,GameBoard gb) {
         if (mana.getFirst() < manaCost)
             m.sendMessage(this.name+" tried to cast Blizzard but there was not enough mana: "+mana.getFirst()+"/"+mana.getSecond());
         else {
@@ -54,7 +54,7 @@ public class Mage extends Player {
             {
                 Random random=new Random();
                 Enemy randomEnemy =releventEnemies.get(random.nextInt(releventEnemies.size()));
-                this.attack(randomEnemy,spellPower);
+                this.attack(randomEnemy,spellPower,gb);
                 hits++;
             }
 
@@ -79,7 +79,7 @@ public class Mage extends Player {
     }
 
     public String describe() {//player stats
-        return (this.name+ "health:"+health.getFirst()+"/"+health.getSecond()+"  attack: "+attackPoints+"   defense: "+defensePoints+"   Level: "+playerLevel+"    Experience: "+this.exp+"/"+50*playerLevel+"    Mana: "+mana.getFirst()+"/"+mana.getSecond()+"    Spell power: "+spellPower);
+        return (this.name+ "     health:"+health.getFirst()+"/"+health.getSecond()+"  attack: "+attackPoints+"   defense: "+defensePoints+"   Level: "+playerLevel+"    Experience: "+this.exp+"/"+50*playerLevel+"    Mana: "+mana.getFirst()+"/"+mana.getSecond()+"    Spell power: "+spellPower);
 
     }
 }

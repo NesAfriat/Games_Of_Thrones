@@ -28,21 +28,27 @@ public class Trap extends Enemy  {
         else
             tickCount=tickCount+1;
         if(range<2) //attack player
-            attack(player);
+            attack(player,gb);
     }
 
     private double Range(OurPair position, OurPair playerLocation) {
         return Math.sqrt(Math.pow(position.getFirst()-playerLocation.getFirst(),2)+Math.pow(position.getSecond()-playerLocation.getSecond(),2));
     }
 
+
     @Override
-    public String toString() {
-        return super.toString();
-    }
     public String describe ()
     {
         return (this.name+"    health: "+health.getFirst()+"/"+health.getSecond()+"    attack: "+attackPoints+" defense: "+defensePoints+"  Experience Value"+getExpValue());
     }
+    @Override
+    public String toString() {
+        if (!visible)
+        return ".";
+        return String.valueOf(getTile());
+    }
+
+
 }
 
 

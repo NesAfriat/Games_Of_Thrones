@@ -36,32 +36,21 @@ public abstract class Player extends Unit {
     }
 
     public abstract void onGameTick();
-
-
-
-    public abstract void abilityCast(List<Enemy> Myenemies);
-
+    
+    public abstract void abilityCast(List<Enemy> Myenemies,GameBoard gb);
 
     @Override
-    public abstract String toString();
-
-
-
-
-    public void accept(VisitorMovement movementVisitor,Player player)
-    {
-        movementVisitor.visit(this,player);
-    }
     public void accept(VisitorMovement movementVisitor,Enemy enemy)
     {
         movementVisitor.visit(this,enemy);
     }
-    public void accept (VisitorMovement movementVisitor,Tile tile)
-    {
-        movementVisitor.visit(this,tile);
-    }
+    //@Override
+   // public void accept (VisitorMovement movementVisitor,Tile tile)
+    //{
+      //  movementVisitor.visit(this,tile);
+    //}
 
-    public void attack(Enemy enemy, int hitPower) // player attacks,enemy defends
+    public void attack(Enemy enemy, int hitPower,GameBoard gb) // player attacks,enemy defends
     {
         Random random=new Random();
         //player roll attack points
@@ -77,24 +66,32 @@ public abstract class Player extends Unit {
             enemy.health.setFirst(enemy.health.getFirst()-diff);//check if enemy died
 
             if (!enemy.isAlive()) {
+                m.sendMessage(enemy.name+" died. "+this.name+" gained "+enemy.getExpValue()+" experience.");
                 this.exp += enemy.getExpValue();
                 if (this.exp >= 50*playerLevel) {
                     this.levelUp();
                 }
+                OurPair tmp=enemy.getPosition();
+                Tile e=new Empty(tmp);
+                gb.setTile(tmp,e);
+                gb.Myenemies.remove(enemy);
+
             }
 
         }
     }
-    public void attack(Enemy enemy)
+    public void attack(Enemy enemy,GameBoard gb)
     {
         m.sendMessage(this.name+ " engaged in combat with "+enemy.name);
+        m.sendMessage(this.describe());
+        m.sendMessage(enemy.describe());
         Random random=new Random();
         //player roll attack points
         int rollAttack=random.nextInt(this.attackPoints);
-        m.sendMessage(this.name + "rolled "+rollAttack+" attack points");
+        m.sendMessage(this.name + " rolled "+rollAttack+" attack points");
         //enemy roll defense points
         int rollDefense=random.nextInt(enemy.defensePoints);
-        m.sendMessage(enemy.name+ " rolled "+rollDefense+ "defense points" );
+        m.sendMessage(enemy.name+ " rolled "+rollDefense+ " defense points" );
         int diff=rollAttack-rollDefense;
 
         if (diff>0)
@@ -105,13 +102,22 @@ public abstract class Player extends Unit {
             {
                 this.exp+=enemy.getExpValue();
                 m.sendMessage(enemy.name+" died. "+this.name+" gained "+enemy.getExpValue()+" experience.");
-                if (this.exp>=50)
+                if (this.exp>=50*playerLevel)
                 {
                     this.levelUp();
                 }
-                OurPair temp=enemy.getPosition();
-                enemy.setPosition(this.getPosition());
-                this.setPosition(temp);
+                OurPair tmp=enemy.getPosition();
+                Tile e=new Empty(tmp);
+                OurPair playerp=this.getPosition();
+                gb.setTile(tmp,this);
+                e.setPosition(playerp);
+                this.setPosition(tmp);
+                gb.setTile(playerp,e);
+                gb.Myenemies.remove(enemy);
+
+
+
+
 
             }
         }
@@ -121,7 +127,15 @@ public abstract class Player extends Unit {
     }
 
     @Override
-    public void attack(Player player) {
+    public void attack(Player player,GameBoard gb) {
 
     }
+    @Override
+    public String toString() {
+        if (!isAlive())
+            return "X";
+        return "@";
+    }
+
+    public abstract String describe();
 }

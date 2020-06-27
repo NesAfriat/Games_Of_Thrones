@@ -30,7 +30,7 @@ public class Warrior extends Player {
     }
 
     @Override
-    public void abilityCast(List<Enemy> enemies) {
+    public void abilityCast(List<Enemy> enemies,GameBoard gb) {
         if (cooldown.getFirst()>0)
             m.sendMessage(this.name+" tried to cast Avenger's sheild, but he's not cool enough: "+cooldown.getFirst()+"/"+cooldown.getSecond());
         else {
@@ -50,15 +50,15 @@ public class Warrior extends Player {
             Random random=new Random();
             if (!releventEnemies.isEmpty()) {
                 Enemy randomEnemy = releventEnemies.get(random.nextInt(releventEnemies.size()));
-                this.attack(randomEnemy, health.getSecond() / 10);
+                this.attack(randomEnemy, health.getSecond() / 10,gb);
             }
 
         }
     }
 
-    @Override
-    public String toString() {
-        return (this.name+ "health:"+health.getFirst()+"/"+health.getSecond()+"  attack: "+attackPoints+"   defense: "+defensePoints+"   Level: "+playerLevel+"    Experience: "+this.exp+"/"+50*playerLevel+"   cooldown: "+this.cooldown.getFirst()+"/"+cooldown.getSecond());
+
+    public String describe() {
+        return (this.name+ "           health:"+health.getFirst()+"/"+health.getSecond()+"  attack: "+attackPoints+"   defense: "+defensePoints+"   Level: "+playerLevel+"    Experience: "+this.exp+"/"+50*playerLevel+"   cooldown: "+this.cooldown.getFirst()+"/"+cooldown.getSecond());
 
     }
 }

@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-public class Rogue extends Player implements MyObserver {
+public class Rogue extends Player {
 
     OurPair energy;//<energyPool,currentEnergy>
     int abilityCost;
@@ -22,7 +22,7 @@ public class Rogue extends Player implements MyObserver {
     }
 
     @Override
-    public void abilityCast(List<Enemy> enemies) {
+    public void abilityCast(List<Enemy> enemies,GameBoard gb) {
         if(energy.getFirst()<abilityCost)
             m.sendMessage(this.name+" tried to cast Fan of Knives, but there was not enough energy: "+energy.getFirst()+"/"+energy.getSecond());
         else {
@@ -33,7 +33,7 @@ public class Rogue extends Player implements MyObserver {
 
                 if (this.getPosition().Range(mo.getPosition())<3)
                 {
-                    this.attack(mo,attackPoints);
+                    this.attack(mo,attackPoints,gb);
                 }
             }
         }
@@ -44,13 +44,13 @@ public class Rogue extends Player implements MyObserver {
         super.levelUp();
         energy.setSecond(100);
         attackPoints=attackPoints+(3*playerLevel);
-        m.sendMessage(this.name +"leveled up and gained:+"+ 10*playerLevel+" health ,+"+ 7*playerLevel+ " attack ,+"+1*playerLevel + "defense");
+        m.sendMessage(this.name +"  leveled up and gained:+"+ 10*playerLevel+" health ,+"+ 7*playerLevel+ " attack ,+"+1*playerLevel + "defense");
 
     }
 
-    @Override
-    public String toString() {
-        return (this.name+ "health:"+health.getFirst()+"/"+health.getSecond()+"  attack: "+attackPoints+"   defense: "+defensePoints+"   Level: "+playerLevel+"    Experience: "+this.exp+"/"+50*playerLevel+"   Energy: "+energy.getFirst()+"/"+energy.getSecond());
+
+    public String describe() {
+        return (this.name+ "    health:"+health.getFirst()+"/"+health.getSecond()+"  attack: "+attackPoints+"   defense: "+defensePoints+"   Level: "+playerLevel+"    Experience: "+this.exp+"/"+50*playerLevel+"   Energy: "+energy.getFirst()+"/"+energy.getSecond());
 
     }
 }

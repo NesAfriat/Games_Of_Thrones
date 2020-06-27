@@ -5,9 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-public class GameController implements MyObserverable {
+public class GameController {
     private Player player;
-    List<MyObserver> enemies;
     List<Enemy> Myenemies;
     MessageHandler m;
     //OurPair playerPosition;
@@ -70,17 +69,15 @@ public class GameController implements MyObserverable {
     }
 
     public void Run(){
+        m.sendMessage("You have selected:"+player.name);
         while(player.isAlive()&&!Myenemies.isEmpty())
         {
-
-            m.sendMessage("You have selected:"+player.name);
-            m.sendMessage(gb.PrintBoard());
-            m.sendMessage(player.toString());//TODO change to describe
-
+            m.sendMessage(gb.StringBoard());
+            m.sendMessage(player.describe());//TODO change to describe
             GameTick();
         }
-
     }
+
     private void GameTick() {
         VisitorMovement vm = new VisitorMovement(gb);
         Scanner sc = new Scanner(System.in);
@@ -92,23 +89,28 @@ public class GameController implements MyObserverable {
 
             switch (move) {
                 case 'w':  //move up
-                    vm.visit(player, gb.getTile(position.getFirst() - 1, position.getSecond()));
+                    gb.getTile(position.getFirst() - 1, position.getSecond()).accept(vm,player);
+                    //player.accept(vm,gb.getTile(position.getFirst() - 1, position.getSecond()));
+                    //vm.visit(player, gb.getTile(position.getFirst() - 1, position.getSecond()));
                     PlayTheRest(Myenemies);
                     break;
                 case 's': //move down
-                    vm.visit(player, gb.getTile(position.getFirst() + 1, position.getSecond()));
+                    gb.getTile(position.getFirst() + 1, position.getSecond()).accept(vm,player);
+                   // vm.visit(player, gb.getTile(position.getFirst() + 1, position.getSecond()));
                     PlayTheRest(Myenemies);
                     break;
                 case 'a': //move left
-                    vm.visit(player, gb.getTile(position.getFirst(), position.getSecond() - 1));
+                    gb.getTile(position.getFirst() , position.getSecond()-1).accept(vm,player);
+                    //vm.visit(player, gb.getTile(position.getFirst(), position.getSecond() - 1));
                     PlayTheRest(Myenemies);
                     break;
                 case 'd': //move right
-                    vm.visit(player, gb.getTile(position.getFirst(), position.getSecond() + 1));
+                    gb.getTile(position.getFirst(), position.getSecond()+1).accept(vm,player);
+                    //vm.visit(player, gb.getTile(position.getFirst(), position.getSecond() + 1));
                     PlayTheRest(Myenemies);
                     break;
                 case 'e': //cast special ability
-                    player.abilityCast(Myenemies);
+                    player.abilityCast(Myenemies,gb);
                     PlayTheRest(Myenemies);
                     break;
                 case 'q': //do nothing
@@ -122,28 +124,16 @@ public class GameController implements MyObserverable {
             GameTick();
         }
     }
-    @Override
-    public void removeObserver(MyObserver o) {
-    enemies.remove(o);
-    }
 
-    @Override
+
     public void PlayTheRest(List<Enemy> Myenemies) {
         player.onGameTick();
         for(Enemy o: Myenemies)
         {
-            if(!o.IsAlive()) {
-                OurPair tmp=o.getEnemy().getPosition();
-                Tile e=new Empty(tmp);
-                gb.setTile(tmp,e);
-                Myenemies.remove(o);
-                //removeObserver(o);
-            }
-            else
-            o.Action(gb,player);
+            o.Action(this.gb,player);
         }
-        m.sendMessage(gb.PrintBoard());
-        m.sendMessage(player.toString());
+        //m.sendMessage(gb.PrintBoard());
+        //m.sendMessage(player.toString());
 
 
     }

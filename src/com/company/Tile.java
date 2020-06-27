@@ -38,15 +38,22 @@ public class Tile {
     }
 
 
-    public boolean IsAlive() {
-        return true;
+    @Override
+    public String toString() {
+        return "";
     }
-
 
     public Enemy getEnemy() {
         return null;
     }
 
 
+
+    protected void accept(VisitorMovement vm, Player player) {
+
+    }
+    protected void accept(VisitorMovement vm, Enemy enemy ) {
+
+    }
 }
 

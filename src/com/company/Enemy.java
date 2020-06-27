@@ -20,18 +20,12 @@ public class Enemy extends Unit {
         return expValue;
     }
 
+    @Override
     public void accept(VisitorMovement movementVisitor,Player player)
     {
         movementVisitor.visit(this,player);
     }
-    public void accept(VisitorMovement movementVisitor,Enemy enemy)
-    {
-        movementVisitor.visit(this,enemy);
-    }
-    public void accept (VisitorMovement movementVisitor,Tile tile)
-    {
-        movementVisitor.visit(this,tile);
-    }
+
 
     @Override
     public Enemy getEnemy() {
@@ -39,17 +33,17 @@ public class Enemy extends Unit {
     }
 
     @Override
-    public void attack(Enemy enemy, int hitpower) {
+    public void attack(Enemy enemy, int hitpower,GameBoard gb) {
 
     }
 
     @Override
-    public void attack(Enemy enemy) {
+    public void attack(Enemy enemy,GameBoard gb) {
 
     }
 
     @Override
-    public void attack(Player player) {
+    public void attack(Player player,GameBoard gb) {
         m.sendMessage(this.name+ " engaged in combat with "+player.name);
         Random random=new Random();
         //player roll attack points
@@ -70,6 +64,10 @@ public class Enemy extends Unit {
             }
 
         }
+    }
+    public String describe()
+    {
+        return "";
     }
 
 

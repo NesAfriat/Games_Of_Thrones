@@ -8,25 +8,24 @@ public class VisitorMovement implements Visitor{
         this.gb=gb;
     }
 
-    public void visit (Unit unit,Tile tile)
+    public void visit (Unit unit,Empty empty)
     {
-        if (tile.getTile()=='.')//player/enemy meets empty
-        {
-            OurPair temp=tile.getPosition();
-            gb.setTile(unit.getPosition(),tile);
+
+            OurPair temp=empty.getPosition();
+            gb.setTile(unit.getPosition(),empty);
             gb.setTile(temp,unit);
-            tile.setPosition(unit.getPosition());
+            empty.setPosition(unit.getPosition());
             unit.setPosition(temp);
-        }
-        //else (enemy on enemy,player/enemy on wall) nothing happens
+
 
     }
+    public void visit(Unit unit,Wall wall){}
     public void visit (Enemy enemy, Player player)
     {
-        enemy.attack(player);
+        player.attack(enemy,gb);
     }
     public void visit(Player player,Enemy enemy)
     {
-        player.attack(enemy);
+        enemy.attack(player,gb);
     }
 }

@@ -6,7 +6,6 @@ import java.util.Observer;
 
 public class GameBoard {
     private Tile[][] gameBoard;
-    LinkedList<MyObserver> enemies;
     LinkedList<Enemy> Myenemies;
     OurPair playerLoaction;
 
@@ -16,7 +15,6 @@ public class GameBoard {
 
     protected Tile[][] NextLevel(char[][] nextlevel) {
         Tile[][] gameObjects = new Tile[nextlevel.length][nextlevel[0].length];
-        enemies = new LinkedList<MyObserver>();
         Myenemies=new LinkedList<>();
         Tile tmp;
         Enemy e;
@@ -41,7 +39,7 @@ public class GameBoard {
 
                         break;
                     case 'k': //monsters cases
-                        e = new Monster('s', new OurPair(i, j), "Lannister Knight", 50, 4, 200, 14, 8);
+                        e = new Monster('k', new OurPair(i, j), "Lannister Knight", 50, 4, 200, 14, 8);
                         gameObjects[i][j] =e;
                         Myenemies.add(e);
                         break;
@@ -91,12 +89,12 @@ public class GameBoard {
                         Myenemies.add(e);
                         break;
                     case 'Q': //traps cases
-                        e = new Trap('B', new OurPair(i, j), "Queen's Trap", 100, 3, 7, 250, 50, 10);
+                        e = new Trap('Q', new OurPair(i, j), "Queen's Trap", 100, 3, 7, 250, 50, 10);
                         gameObjects[i][j] = e;
                         Myenemies.add(e);
                         break;
                     case 'D': //traps cases
-                        e = new Trap('B', new OurPair(i, j), "Death Trap", 250, 1, 10, 500, 100, 20);
+                        e = new Trap('D', new OurPair(i, j), "Death Trap", 250, 1, 10, 500, 100, 20);
                         gameObjects[i][j] = e;
                         Myenemies.add(e);
                         break;
@@ -108,10 +106,6 @@ public class GameBoard {
 
     public LinkedList<Enemy> getMyenemies() {
         return Myenemies;
-    }
-
-    public List<MyObserver> getEnemies() {
-        return enemies;
     }
 
     public Tile getTile(int i, int j) {
@@ -127,11 +121,11 @@ public class GameBoard {
     }
 
 
-    public String PrintBoard() {
+    public String StringBoard() {
         String board= "";
         for (int i = 0; i < gameBoard.length; i++) {
             for (int j = 0; j < gameBoard[i].length; j++) {
-                board= board+ gameBoard[i][j].getTile();
+                board= board+ gameBoard[i][j].toString();
             }
             board= board + "\n";
         }

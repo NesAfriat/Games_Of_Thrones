@@ -17,39 +17,39 @@ public class Monster extends Enemy {
         VisitorMovement vm= new VisitorMovement(gb);
         int dx, dy;
         if(range<visionRange) {
-            dx = monsterP.getFirst() - playerP.getFirst();
-            dy = monsterP.getSecond() - playerP.getSecond();
+            dy = monsterP.getFirst() - playerP.getFirst();
+            dx = monsterP.getSecond() - playerP.getSecond();
         if(Math.abs(dx)>Math.abs(dy)) {
             if (dx > 0)
-                vm.visit(this, gb.getTile(monsterP.getFirst(), monsterP.getSecond() - 1));
+                gb.getTile(monsterP.getFirst(), monsterP.getSecond() - 1).accept(vm,this);
             else
-                vm.visit(this, gb.getTile(monsterP.getFirst(), monsterP.getSecond() + 1));
+                gb.getTile(monsterP.getFirst(), monsterP.getSecond() + 1).accept(vm,this);
         }
             else if(dy>0)
-                vm.visit(this, gb.getTile(monsterP.getFirst()+1, monsterP.getSecond()));
+                gb.getTile(monsterP.getFirst()-1, monsterP.getSecond()).accept(vm,this);
             else
-                vm.visit(this, gb.getTile(monsterP.getFirst()-1, monsterP.getSecond()));
+                gb.getTile(monsterP.getFirst()+1, monsterP.getSecond()).accept(vm,this);
         }
         else
             MoveRandomly(vm,gb,monsterP);
     }
 
     private void MoveRandomly(VisitorMovement vm, GameBoard gb,OurPair monsterP) {
-        int move = (int)Math.floor(Math.random()* 4);
+        int move = (int)Math.floor(Math.random()* 5);
         switch (move) {
-           // case 0:
-             //   break;
             case 0:
-                vm.visit(this, gb.getTile(monsterP.getFirst(), monsterP.getSecond() + 1));
-                break;
+               break;
             case 1:
-                vm.visit(this, gb.getTile(monsterP.getFirst(), monsterP.getSecond() - 1));
+                gb.getTile(monsterP.getFirst(), monsterP.getSecond() + 1).accept(vm,this);
                 break;
             case 2:
-                vm.visit(this, gb.getTile(monsterP.getFirst()+1, monsterP.getSecond()));
+                gb.getTile(monsterP.getFirst(), monsterP.getSecond() - 1).accept(vm,this);
                 break;
             case 3:
-                vm.visit(this, gb.getTile(monsterP.getFirst()-1, monsterP.getSecond()));
+                gb.getTile(monsterP.getFirst()+1, monsterP.getSecond()).accept(vm,this);
+                break;
+            case 4:
+                gb.getTile(monsterP.getFirst()-1, monsterP.getSecond()).accept(vm,this);
                 break;
         }
 
@@ -59,8 +59,13 @@ public class Monster extends Enemy {
     {
         return Math.sqrt(Math.pow(position.getFirst()-playerLocation.getFirst(),2)+Math.pow(position.getSecond()-playerLocation.getSecond(),2));
     }
+    @Override
     public String describe ()
     {
         return (this.name+"    health: "+health.getFirst()+"/"+health.getSecond()+"   Attack: "+attackPoints+"   Defense: "+defensePoints+"  Experience Value"+getExpValue()+" Vision range: "+visionRange);
+    }
+    @Override
+    public String toString() {
+        return String.valueOf(getTile());
     }
 }

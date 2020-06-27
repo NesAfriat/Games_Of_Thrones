@@ -22,18 +22,18 @@ public class Rogue extends Player implements MyObserver {
     }
 
     @Override
-    public void abilityCast(List<MyObserver> enemies) {
+    public void abilityCast(List<Enemy> enemies) {
         if(energy.getFirst()<abilityCost)
-            System.out.println("Cant cast ability yet-try eating energy bar");
+            m.sendMessage(this.name+" tried to cast Fan of Knives, but there was not enough energy: "+energy.getFirst()+"/"+energy.getSecond());
         else {
+            m.sendMessage(this.name +" cast Fan of Knives");
             energy.setFirst(energy.getFirst()-abilityCost);
-            for (MyObserver mo:enemies)
+            for (Enemy mo:enemies)
             {
 
-                Enemy emo=mo.getEnemy();
-                if (this.getPosition().Range(emo.getPosition())<3)
+                if (this.getPosition().Range(mo.getPosition())<3)
                 {
-                    this.attack(emo,attackPoints);
+                    this.attack(mo,attackPoints);
                 }
             }
         }
@@ -44,9 +44,13 @@ public class Rogue extends Player implements MyObserver {
         super.levelUp();
         energy.setSecond(100);
         attackPoints=attackPoints+(3*playerLevel);
+        m.sendMessage(this.name +"leveled up and gained:+"+ 10*playerLevel+" health ,+"+ 7*playerLevel+ " attack ,+"+1*playerLevel + "defense");
+
     }
 
+    @Override
+    public String toString() {
+        return (this.name+ "health:"+health.getFirst()+"/"+health.getSecond()+"  attack: "+attackPoints+"   defense: "+defensePoints+"   Level: "+playerLevel+"    Experience: "+this.exp+"/"+50*playerLevel+"   Energy: "+energy.getFirst()+"/"+energy.getSecond());
 
-
-
+    }
 }

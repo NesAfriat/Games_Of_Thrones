@@ -10,7 +10,8 @@ import java.util.stream.Collectors;
 public class Main {
 
     public static void main(String[] args) {
-        GameController gc=new GameController();
+        MessageHandler m=new MessageHandler();
+        GameController gc=new GameController(m);
         try {
             List<String> levelData;
             List<String> LevelFiles = Files.list(Paths.get(args[0])).sorted().map(Path::toString).collect(Collectors.toList());
@@ -27,7 +28,11 @@ public class Main {
                     gc.NewLevel(currentLevel);
                     gc.Run();
                     if(gc.GameOver())
-                        break;
+                        gc.m.sendMessage("You lost.");
+                    else
+                    {
+                        //load next level
+                    }
             }
         }
         catch (IOException e)

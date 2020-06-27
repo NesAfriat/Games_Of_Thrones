@@ -1,5 +1,5 @@
-package com.company;
 
+package com.company;
 
 import java.util.Random;
 
@@ -8,6 +8,7 @@ public abstract class Unit extends Tile {
     protected OurPair health;
     protected int attackPoints;
     protected int defensePoints;
+    MessageHandler m;
  //   private final char DEADPLAYER= 'X';
     public Unit(char type, OurPair position,String name,int _health, int attackPoints, int defensePoints) {
         super(type, position);
@@ -15,6 +16,7 @@ public abstract class Unit extends Tile {
         this.health=new OurPair(_health,_health);
         this.attackPoints=attackPoints;
         this.defensePoints=defensePoints;
+        m=new MessageHandler();
     }
     public boolean isAlive()
     {

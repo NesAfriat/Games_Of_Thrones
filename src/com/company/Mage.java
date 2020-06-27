@@ -1,7 +1,6 @@
+
 package com.company;
 
-import com.company.OurPair;
-import com.company.Player;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -32,6 +31,8 @@ public class Mage extends Player {
         mana.setSecond(mana.getSecond()+(25*playerLevel));
         mana.setFirst(Math.min(mana.getFirst()+(mana.getSecond()/4),mana.getSecond()));
         this.spellPower=this.spellPower+(10*playerLevel);
+        m.sendMessage(this.name +"leveled up and gained:+"+ 10*playerLevel+" health ,+"+ 4*playerLevel+ " attack ,+"+1*playerLevel + " defense ,+ "+25*playerLevel+" mana , +"+10*playerLevel+" spell power");
+
 
     }
 
@@ -41,30 +42,30 @@ public class Mage extends Player {
     }
 
     @Override
-    public void abilityCast(List<MyObserver> enemies) {
+    public void abilityCast(List<Enemy> enemies) {
         if (mana.getFirst() < manaCost)
-            System.out.println("Cant cast ability yet-need more mana");
+            m.sendMessage(this.name+" tried to cast Blizzard but there was not enough mana: "+mana.getFirst()+"/"+mana.getSecond());
         else {
+            m.sendMessage(this.name +" cast Blizzard.");
             mana.setFirst(mana.getFirst() - manaCost);
             int hits = 0;
-            LinkedList<MyObserver> releventEnemies=enemyInRange(enemies);
+            LinkedList<Enemy> releventEnemies=enemyInRange(enemies);
             while (hits < hitsCount&!releventEnemies.isEmpty())
             {
                 Random random=new Random();
-                Enemy randomEnemy = (Enemy) releventEnemies.get(random.nextInt(releventEnemies.size()));
+                Enemy randomEnemy =releventEnemies.get(random.nextInt(releventEnemies.size()));
                 this.attack(randomEnemy,spellPower);
                 hits++;
             }
 
         }
     }
-    private LinkedList<MyObserver> enemyInRange(List<MyObserver> enemies)
+    private LinkedList<Enemy> enemyInRange(List<Enemy> enemies)
     {
-        LinkedList<MyObserver> releventEnemies=new LinkedList<>();//only enemies within range 3
-        for (MyObserver mo:enemies)
+        LinkedList<Enemy> releventEnemies=new LinkedList<>();//only enemies within range 3
+        for (Enemy mo:enemies)
         {
-            Enemy emo=mo.getEnemy();
-            if (this.getPosition().Range(emo.getPosition())<abilityRange)
+            if (this.getPosition().Range(mo.getPosition())<abilityRange)
             {
                 releventEnemies.add(mo);
             }
@@ -72,6 +73,14 @@ public class Mage extends Player {
         return releventEnemies;
     }
 
+    @Override
+    public String toString() {
+        return null;
+    }
+
+    public String describe() {//player stats
+        return (this.name+ "health:"+health.getFirst()+"/"+health.getSecond()+"  attack: "+attackPoints+"   defense: "+defensePoints+"   Level: "+playerLevel+"    Experience: "+this.exp+"/"+50*playerLevel+"    Mana: "+mana.getFirst()+"/"+mana.getSecond()+"    Spell power: "+spellPower);
 
     }
+}
 

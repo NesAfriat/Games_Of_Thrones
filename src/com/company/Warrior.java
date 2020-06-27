@@ -22,6 +22,7 @@ public class Warrior extends Player {
         health.setSecond(health.getSecond()+(5*playerLevel));
         attackPoints=attackPoints+(2*playerLevel);
         defensePoints=defensePoints+playerLevel;
+        m.sendMessage(this.name +"leveled up and gained:+"+ 15*playerLevel+" health ,+"+ 6*playerLevel+ " attack ,+"+2*playerLevel + "defense");
     }
     public void onGameTick()
     {
@@ -29,18 +30,18 @@ public class Warrior extends Player {
     }
 
     @Override
-    public void abilityCast(List<MyObserver> enemies) {
+    public void abilityCast(List<Enemy> enemies) {
         if (cooldown.getFirst()>0)
-            System.out.println("Cant cast ability yet-not cool enough");
+            m.sendMessage(this.name+" tried to cast Avenger's sheild, but he's not cool enough: "+cooldown.getFirst()+"/"+cooldown.getSecond());
         else {
+            m.sendMessage(this.name +"cast Avenger's sheild.");
             cooldown.setFirst(cooldown.getSecond());
             health.setFirst(Math.min(health.getFirst()+(10*defensePoints),health.getSecond()));
 
-            LinkedList<MyObserver> releventEnemies=new LinkedList<>();//only enemies within range 3
-            for (MyObserver mo:enemies)
+            LinkedList<Enemy> releventEnemies=new LinkedList<>();//only enemies within range 3
+            for (Enemy mo:enemies)
             {
-                Enemy emo=mo.getEnemy();
-                if (this.getPosition().Range(emo.getPosition())<3)
+                if (this.getPosition().Range(mo.getPosition())<3)
                 {
                     releventEnemies.add(mo);
                 }
@@ -48,12 +49,16 @@ public class Warrior extends Player {
 
             Random random=new Random();
             if (!releventEnemies.isEmpty()) {
-                Enemy randomEnemy = (Enemy) releventEnemies.get(random.nextInt(releventEnemies.size()));
+                Enemy randomEnemy = releventEnemies.get(random.nextInt(releventEnemies.size()));
                 this.attack(randomEnemy, health.getSecond() / 10);
             }
 
         }
     }
 
+    @Override
+    public String toString() {
+        return (this.name+ "health:"+health.getFirst()+"/"+health.getSecond()+"  attack: "+attackPoints+"   defense: "+defensePoints+"   Level: "+playerLevel+"    Experience: "+this.exp+"/"+50*playerLevel+"   cooldown: "+this.cooldown.getFirst()+"/"+cooldown.getSecond());
 
+    }
 }

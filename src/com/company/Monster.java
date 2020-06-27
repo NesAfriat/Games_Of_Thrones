@@ -14,7 +14,7 @@ public class Monster extends Enemy {
         OurPair monsterP = this.getPosition();
         OurPair playerP= player.getPosition();
         double range= Range(monsterP, playerP);
-        VisitorMovement vm= new VisitorMovement();
+        VisitorMovement vm= new VisitorMovement(gb);
         int dx, dy;
         if(range<visionRange) {
             dx = monsterP.getFirst() - playerP.getFirst();
@@ -35,20 +35,20 @@ public class Monster extends Enemy {
     }
 
     private void MoveRandomly(VisitorMovement vm, GameBoard gb,OurPair monsterP) {
-        int move = (int)Math.floor(Math.random()* 5);
+        int move = (int)Math.floor(Math.random()* 4);
         switch (move) {
+           // case 0:
+             //   break;
             case 0:
-                break;
-            case 1:
                 vm.visit(this, gb.getTile(monsterP.getFirst(), monsterP.getSecond() + 1));
                 break;
-            case 2:
+            case 1:
                 vm.visit(this, gb.getTile(monsterP.getFirst(), monsterP.getSecond() - 1));
                 break;
-            case 3:
+            case 2:
                 vm.visit(this, gb.getTile(monsterP.getFirst()+1, monsterP.getSecond()));
                 break;
-            case 4:
+            case 3:
                 vm.visit(this, gb.getTile(monsterP.getFirst()-1, monsterP.getSecond()));
                 break;
         }
@@ -58,5 +58,9 @@ public class Monster extends Enemy {
     private double Range(OurPair position, OurPair playerLocation)
     {
         return Math.sqrt(Math.pow(position.getFirst()-playerLocation.getFirst(),2)+Math.pow(position.getSecond()-playerLocation.getSecond(),2));
+    }
+    public String describe ()
+    {
+        return (this.name+"    health: "+health.getFirst()+"/"+health.getSecond()+"   Attack: "+attackPoints+"   Defense: "+defensePoints+"  Experience Value"+getExpValue()+" Vision range: "+visionRange);
     }
 }

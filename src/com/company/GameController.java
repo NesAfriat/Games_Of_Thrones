@@ -1,5 +1,6 @@
 package com.company;
 
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -7,11 +8,14 @@ import java.util.Scanner;
 public class GameController implements MyObserverable {
     private Player player;
     List<MyObserver> enemies;
+    List<Enemy> Myenemies;
+    MessageHandler m;
     //OurPair playerPosition;
     GameBoard gb;
 
-    public GameController(){
+    public GameController(MessageHandler m){
         choosePlayer();
+        this.m=m;
     }
   private void choosePlayer()
     {
@@ -62,44 +66,60 @@ public class GameController implements MyObserverable {
         gb.setPlayer(player);
         OurPair playerP=gb.getPlayerLoaction();
         player.setPosition(playerP);
-        enemies=gb.getEnemies();
+        Myenemies=gb.getMyenemies();
     }
 
     public void Run(){
-        while(player.isAlive()&&!enemies.isEmpty())
+        while(player.isAlive()&&!Myenemies.isEmpty())
         {
+
+            m.sendMessage("You have selected:"+player.name);
+            m.sendMessage(gb.PrintBoard());
+            m.sendMessage(player.toString());//TODO change to describe
+
             GameTick();
         }
+
     }
     private void GameTick() {
-        VisitorMovement vm = new VisitorMovement();
+        VisitorMovement vm = new VisitorMovement(gb);
         Scanner sc = new Scanner(System.in);
-        char move = (char) sc.nextInt();
+        //char move = (char) sc.nextInt();
+        char move=sc.next().charAt(0);
         OurPair position = player.getPosition();
-        switch (move) {
-            case 'w':  //move up
-                vm.visit(player, gb.getTile(position.getFirst() - 1, position.getSecond()));
-                PlayTheRest(enemies);
-                break;
-            case 's': //move down
-                vm.visit(player, gb.getTile(position.getFirst() + 1, position.getSecond()));
-                PlayTheRest(enemies);
-                break;
-            case 'a': //move left
-                vm.visit(player, gb.getTile(position.getFirst(), position.getSecond() - 1));
-                PlayTheRest(enemies);
-                break;
-            case 'd': //move right
-                vm.visit(player, gb.getTile(position.getFirst(), position.getSecond() + 1));
-                PlayTheRest(enemies);
-                break;
-            case 'e': //cast special ability
-                player.abilityCast(enemies);
-                PlayTheRest(enemies);
-                break;
-            case 'q': //do nothing
-                PlayTheRest(enemies);
-                break;
+        try {
+
+
+            switch (move) {
+                case 'w':  //move up
+                    vm.visit(player, gb.getTile(position.getFirst() - 1, position.getSecond()));
+                    PlayTheRest(Myenemies);
+                    break;
+                case 's': //move down
+                    vm.visit(player, gb.getTile(position.getFirst() + 1, position.getSecond()));
+                    PlayTheRest(Myenemies);
+                    break;
+                case 'a': //move left
+                    vm.visit(player, gb.getTile(position.getFirst(), position.getSecond() - 1));
+                    PlayTheRest(Myenemies);
+                    break;
+                case 'd': //move right
+                    vm.visit(player, gb.getTile(position.getFirst(), position.getSecond() + 1));
+                    PlayTheRest(Myenemies);
+                    break;
+                case 'e': //cast special ability
+                    player.abilityCast(Myenemies);
+                    PlayTheRest(Myenemies);
+                    break;
+                case 'q': //do nothing
+                    PlayTheRest(Myenemies);
+                    break;
+            }
+        }
+        catch (Exception e)
+        {
+            m.sendMessage("illegal input,try again.");
+            GameTick();
         }
     }
     @Override
@@ -108,19 +128,23 @@ public class GameController implements MyObserverable {
     }
 
     @Override
-    public void PlayTheRest(List<MyObserver> enemies) {
+    public void PlayTheRest(List<Enemy> Myenemies) {
         player.onGameTick();
-        for(MyObserver o: enemies)
+        for(Enemy o: Myenemies)
         {
             if(!o.IsAlive()) {
                 OurPair tmp=o.getEnemy().getPosition();
                 Tile e=new Empty(tmp);
                 gb.setTile(tmp,e);
-                removeObserver(o);
+                Myenemies.remove(o);
+                //removeObserver(o);
             }
             else
             o.Action(gb,player);
         }
+        m.sendMessage(gb.PrintBoard());
+        m.sendMessage(player.toString());
+
 
     }
 

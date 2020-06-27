@@ -1,6 +1,5 @@
 package com.company;
 
-import com.company.Unit;
 
 import java.util.List;
 import java.util.Random;
@@ -9,6 +8,7 @@ public abstract class Player extends Unit {
     int exp;
     int playerLevel;
     int abilityRange;
+
 
     public int getExp() {
         return exp;
@@ -32,19 +32,18 @@ public abstract class Player extends Unit {
         health.setFirst(health.getSecond());
         attackPoints=attackPoints+4*playerLevel;
         defensePoints=defensePoints+playerLevel;
+
     }
 
     public abstract void onGameTick();
 
 
 
-    public void abilityCast(List<MyObserver> enemies)
-    {}
+    public abstract void abilityCast(List<Enemy> Myenemies);
+
 
     @Override
-    public String toString() {
-        return ("your level is:"+playerLevel+ " your health is:"+health.getFirst()+" out of "+health.getSecond()+" your attackP is: "+attackPoints+" your defenseP is: "+defensePoints);
-    }
+    public abstract String toString();
 
 
 
@@ -69,15 +68,17 @@ public abstract class Player extends Unit {
         int rollAttack=hitPower;
         //enemy roll defense points
         int rollDefense=random.nextInt(enemy.defensePoints);
+        m.sendMessage(enemy.name+ " rolled "+rollDefense+ "defense points" );
         int diff=rollAttack-rollDefense;
 
         if (diff>0)
         {
+            m.sendMessage(this.name+ " hit "+enemy.name+" for "+diff+" ability damage.");
             enemy.health.setFirst(enemy.health.getFirst()-diff);//check if enemy died
 
             if (!enemy.isAlive()) {
                 this.exp += enemy.getExpValue();
-                if (this.exp >= 50) {
+                if (this.exp >= 50*playerLevel) {
                     this.levelUp();
                 }
             }
@@ -86,19 +87,24 @@ public abstract class Player extends Unit {
     }
     public void attack(Enemy enemy)
     {
+        m.sendMessage(this.name+ " engaged in combat with "+enemy.name);
         Random random=new Random();
         //player roll attack points
         int rollAttack=random.nextInt(this.attackPoints);
+        m.sendMessage(this.name + "rolled "+rollAttack+" attack points");
         //enemy roll defense points
         int rollDefense=random.nextInt(enemy.defensePoints);
+        m.sendMessage(enemy.name+ " rolled "+rollDefense+ "defense points" );
         int diff=rollAttack-rollDefense;
 
         if (diff>0)
         {
+            m.sendMessage(this.name+" dealt "+diff+" damage to "+enemy.name);
             enemy.health.setFirst(enemy.health.getFirst()-diff);
             if (!enemy.isAlive())
             {
                 this.exp+=enemy.getExpValue();
+                m.sendMessage(enemy.name+" died. "+this.name+" gained "+enemy.getExpValue()+" experience.");
                 if (this.exp>=50)
                 {
                     this.levelUp();
@@ -108,6 +114,9 @@ public abstract class Player extends Unit {
                 this.setPosition(temp);
 
             }
+        }
+        else {
+            m.sendMessage(this.name+" dealt 0 damage to "+enemy.name);
         }
     }
 

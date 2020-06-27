@@ -22,7 +22,7 @@ public class Warrior extends Player {
         health.setSecond(health.getSecond()+(5*playerLevel));
         attackPoints=attackPoints+(2*playerLevel);
         defensePoints=defensePoints+playerLevel;
-        m.sendMessage(this.name +"leveled up and gained:+"+ 15*playerLevel+" health ,+"+ 6*playerLevel+ " attack ,+"+2*playerLevel + "defense");
+        m.sendMessage(this.name +" leveled up and gained:+"+ 15*playerLevel+" Health ,+"+ 6*playerLevel+ " Attack ,+"+2*playerLevel + "Defense");
     }
     public void onGameTick()
     {
@@ -58,7 +58,7 @@ public class Warrior extends Player {
 
 
     public String describe() {
-        return (this.name+ "           health:"+health.getFirst()+"/"+health.getSecond()+"  attack: "+attackPoints+"   defense: "+defensePoints+"   Level: "+playerLevel+"    Experience: "+this.exp+"/"+50*playerLevel+"   cooldown: "+this.cooldown.getFirst()+"/"+cooldown.getSecond());
+        return (this.name+ "     Health:"+health.getFirst()+"/"+health.getSecond()+"  Attack: "+attackPoints+"   Defense: "+defensePoints+"   Level: "+playerLevel+"    Experience: "+this.exp+"/"+50*playerLevel+"   Cooldown: "+this.cooldown.getFirst()+"/"+cooldown.getSecond());
 
     }
 }

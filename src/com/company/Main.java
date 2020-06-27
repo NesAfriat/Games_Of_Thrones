@@ -27,8 +27,11 @@ public class Main {
                 }
                     gc.NewLevel(currentLevel);
                     gc.Run();
-                    if(gc.GameOver())
+                    if(gc.GameOver()) {
+                        gc.m.sendMessage(gc.gb.StringBoard());
                         gc.m.sendMessage("You lost.");
+                        break;
+                    }
                     else
                     {
                         //load next level

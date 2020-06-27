@@ -31,7 +31,7 @@ public class Mage extends Player {
         mana.setSecond(mana.getSecond()+(25*playerLevel));
         mana.setFirst(Math.min(mana.getFirst()+(mana.getSecond()/4),mana.getSecond()));
         this.spellPower=this.spellPower+(10*playerLevel);
-        m.sendMessage(this.name +"leveled up and gained:+"+ 10*playerLevel+" health ,+"+ 4*playerLevel+ " attack ,+"+1*playerLevel + " defense ,+ "+25*playerLevel+" mana , +"+10*playerLevel+" spell power");
+        m.sendMessage(this.name +" leveled up and gained:+"+ 10*playerLevel+" Health ,+"+ 4*playerLevel+ " Attack ,+"+1*playerLevel + " Defense ,+ "+25*playerLevel+" Mana , +"+10*playerLevel+" Spell power");
 
 
     }
@@ -72,14 +72,9 @@ public class Mage extends Player {
         }
         return releventEnemies;
     }
-
-    @Override
-    public String toString() {
-        return null;
-    }
-
+    
     public String describe() {//player stats
-        return (this.name+ "     health:"+health.getFirst()+"/"+health.getSecond()+"  attack: "+attackPoints+"   defense: "+defensePoints+"   Level: "+playerLevel+"    Experience: "+this.exp+"/"+50*playerLevel+"    Mana: "+mana.getFirst()+"/"+mana.getSecond()+"    Spell power: "+spellPower);
+        return (this.name+ "     Health:"+health.getFirst()+"/"+health.getSecond()+"  Attack: "+attackPoints+"   Defense: "+defensePoints+"   Level: "+playerLevel+"    Experience: "+this.exp+"/"+50*playerLevel+"    Mana: "+mana.getFirst()+"/"+mana.getSecond()+"    Spell power: "+spellPower);
 
     }
 }

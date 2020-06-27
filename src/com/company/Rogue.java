@@ -44,13 +44,13 @@ public class Rogue extends Player {
         super.levelUp();
         energy.setSecond(100);
         attackPoints=attackPoints+(3*playerLevel);
-        m.sendMessage(this.name +"  leveled up and gained:+"+ 10*playerLevel+" health ,+"+ 7*playerLevel+ " attack ,+"+1*playerLevel + "defense");
+        m.sendMessage(this.name +"  leveled up and gained:+"+ 10*playerLevel+" Health ,+"+ 7*playerLevel+ " Attack ,+"+1*playerLevel + "Defense");
 
     }
 
 
     public String describe() {
-        return (this.name+ "    health:"+health.getFirst()+"/"+health.getSecond()+"  attack: "+attackPoints+"   defense: "+defensePoints+"   Level: "+playerLevel+"    Experience: "+this.exp+"/"+50*playerLevel+"   Energy: "+energy.getFirst()+"/"+energy.getSecond());
+        return (this.name+ "    Health:"+health.getFirst()+"/"+health.getSecond()+"  Attack: "+attackPoints+"   Defense: "+defensePoints+"   Level: "+playerLevel+"    Experience: "+this.exp+"/"+50*playerLevel+"   Energy: "+energy.getFirst()+"/"+energy.getSecond());
 
     }
 }

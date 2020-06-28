@@ -2,24 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="65775d57-8932-4f84-a84a-0f9d9544fc1e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/hw3/META-INF/hw3.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/hw3/com/company/Enemy.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hw3/com/company/Enemy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/hw3/com/company/GameBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hw3/com/company/GameBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/hw3/com/company/GameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hw3/com/company/GameController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/hw3/com/company/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hw3/com/company/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/hw3/com/company/Rogue.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hw3/com/company/Rogue.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/hw3/com/company/Tile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hw3/com/company/Tile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/hw3/com/company/Trap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/hw3/com/company/Trap.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/GameBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Mage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Mage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Rogue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Rogue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Tile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Trap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Trap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Unit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Unit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Warrior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Warrior.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/company/Objects/Player.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/company/Tests/Tests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Control/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Control/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Empty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Objects/Empty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Objects/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Objects/GameBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/GameController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Hunter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Objects/Hunter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Interactions.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Mage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Objects/Mage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/MessageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Control/MessageHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Objects/Monster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Objects/Trap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Objects/Trap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Player.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Rogue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Objects/Rogue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Objects/Tile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Trap.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Unit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Objects/Unit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Visitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/VisitorMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/VisitorMovement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Wall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Objects/Wall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Warrior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Objects/Warrior.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,6 +48,10 @@
   </component>
   <component name="ProjectId" id="1cMZSGzTJ2JhsJELlMYeDYpfh9n" />
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -60,7 +69,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.Tests">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="com.company.Main" />
       <module name="hw3" />
@@ -71,8 +80,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Tests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="hw3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.company.Tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.company.Tests" />
+      <option name="MAIN_CLASS_NAME" value="com.company.Tests.Tests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.Tests" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>

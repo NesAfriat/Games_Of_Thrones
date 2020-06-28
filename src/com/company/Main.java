@@ -1,5 +1,7 @@
 package com.company;
-import java.beans.EventHandler;
+import com.company.Control.GameController;
+import com.company.Control.MessageHandler;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -28,8 +30,7 @@ public class Main {
                     gc.NewLevel(currentLevel);
                     gc.Run();
                     if(gc.GameOver()) {
-                        gc.m.sendMessage(gc.gb.StringBoard());
-                        gc.m.sendMessage("You lost.");
+                        gc.EndGame();
                         break;
                     }
                     else

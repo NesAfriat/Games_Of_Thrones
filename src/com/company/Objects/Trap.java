@@ -1,23 +1,23 @@
 
 
-package com.company;
+package com.company.Objects;
 
-import java.util.List;
-import java.util.Observer;
+import com.company.OurPair;
+import com.company.VisitorMovement;
 
-public class Trap extends Enemy  {
+public class Trap extends Enemy {
     private int visibilityTime;
     private int inVisibilityTime;
     private int tickCount=0;
     private boolean visible=true;
  //   private final int ABILITYRANGE=
-    public Trap(char type, OurPair position,String name,int exp, int visibilityTime, int inVisibilityTime,int health, int attackPoints, int defensePoints) {
+    public Trap(char type, OurPair position, String name, int exp, int visibilityTime, int inVisibilityTime, int health, int attackPoints, int defensePoints) {
         super(type, position,exp, name,health , attackPoints,defensePoints);
         this.inVisibilityTime= inVisibilityTime;
         this.visibilityTime=visibilityTime;
         }
    @Override
-    public void Action(GameBoard gb,Player player) {
+    public void Action(GameBoard gb, Player player) {
         VisitorMovement vm= new VisitorMovement(gb);
         OurPair playerP= player.getPosition();
         OurPair trapP= this.getPosition();

@@ -1,6 +1,8 @@
 
-package com.company;
+package com.company.Objects;
 
+
+import com.company.OurPair;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -42,7 +44,7 @@ public class Mage extends Player {
     }
 
     @Override
-    public void abilityCast(List<Enemy> enemies,GameBoard gb) {
+    public void abilityCast(List<Enemy> enemies, GameBoard gb) {
         if (mana.getFirst() < manaCost)
             m.sendMessage(this.name+" tried to cast Blizzard but there was not enough mana: "+mana.getFirst()+"/"+mana.getSecond());
         else {

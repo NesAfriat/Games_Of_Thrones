@@ -1,6 +1,7 @@
-package com.company;
+package com.company.Objects;
 
-import java.util.List;
+import com.company.OurPair;
+import com.company.VisitorMovement;
 
 public class Monster extends Enemy {
     private int visionRange;
@@ -10,7 +11,7 @@ public class Monster extends Enemy {
     }
 
     @Override
-    public void Action(GameBoard gb,Player player) {
+    public void Action(GameBoard gb, Player player) {
         OurPair monsterP = this.getPosition();
         OurPair playerP= player.getPosition();
         double range= Range(monsterP, playerP);

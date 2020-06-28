@@ -1,4 +1,6 @@
-package com.company;
+package com.company.Objects;
+
+import com.company.OurPair;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -30,7 +32,7 @@ public class Warrior extends Player {
     }
 
     @Override
-    public void abilityCast(List<Enemy> enemies,GameBoard gb) {
+    public void abilityCast(List<Enemy> enemies, GameBoard gb) {
         if (cooldown.getFirst()>0)
             m.sendMessage(this.name+" tried to cast Avenger's sheild, but he's not cool enough: "+cooldown.getFirst()+"/"+cooldown.getSecond());
         else {

@@ -1,8 +1,8 @@
-package com.company;
+package com.company.Objects;
+
+import com.company.OurPair;
 
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Observer;
 
 public class GameBoard {
     private Tile[][] gameBoard;

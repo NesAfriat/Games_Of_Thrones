@@ -1,7 +1,9 @@
 
-package com.company;
+package com.company.Objects;
 
-import java.util.List;
+import com.company.Control.MessageHandler;
+import com.company.OurPair;
+import com.company.VisitorMovement;
 
 public class Tile {
     private char tile;
@@ -49,10 +51,10 @@ public class Tile {
 
 
 
-    protected void accept(VisitorMovement vm, Player player) {
+    public void accept(VisitorMovement vm, Player player) {
 
     }
-    protected void accept(VisitorMovement vm, Enemy enemy ) {
+    public void accept(VisitorMovement vm, Enemy enemy) {
 
     }
 }

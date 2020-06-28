@@ -1,13 +1,12 @@
-package com.company;
+package com.company.Control;
 
 public class MessageHandler {
 
-
-    public void sendMessage(String s)
+    public static void sendMessage(String s)
     {
         System.out.println(s);
     }
-    public void sendMessage(char c)
+    public static void sendMessage(char c)
     {
         System.out.println(c);
     }

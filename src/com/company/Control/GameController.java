@@ -1,7 +1,13 @@
-package com.company;
+package com.company.Control;
 
-import java.io.IOException;
-import java.util.LinkedList;
+import com.company.Objects.Enemy;
+import com.company.Objects.GameBoard;
+import com.company.OurPair;
+import com.company.Objects.Mage;
+import com.company.Objects.Player;
+import com.company.Objects.Rogue;
+import com.company.Objects.Warrior;
+import com.company.VisitorMovement;
 import java.util.List;
 import java.util.Scanner;
 
@@ -69,7 +75,7 @@ public class GameController {
     }
 
     public void Run(){
-        m.sendMessage("You have selected:"+player.name);
+        m.sendMessage("You have selected:"+player.getName());
         while(player.isAlive()&&!Myenemies.isEmpty())
         {
             m.sendMessage(gb.StringBoard());
@@ -81,7 +87,6 @@ public class GameController {
     private void GameTick() {
         VisitorMovement vm = new VisitorMovement(gb);
         Scanner sc = new Scanner(System.in);
-        //char move = (char) sc.nextInt();
         char move=sc.next().charAt(0);
         OurPair position = player.getPosition();
         try {
@@ -90,23 +95,18 @@ public class GameController {
             switch (move) {
                 case 'w':  //move up
                     gb.getTile(position.getFirst() - 1, position.getSecond()).accept(vm,player);
-                    //player.accept(vm,gb.getTile(position.getFirst() - 1, position.getSecond()));
-                    //vm.visit(player, gb.getTile(position.getFirst() - 1, position.getSecond()));
                     PlayTheRest(Myenemies);
                     break;
                 case 's': //move down
                     gb.getTile(position.getFirst() + 1, position.getSecond()).accept(vm,player);
-                   // vm.visit(player, gb.getTile(position.getFirst() + 1, position.getSecond()));
                     PlayTheRest(Myenemies);
                     break;
                 case 'a': //move left
                     gb.getTile(position.getFirst() , position.getSecond()-1).accept(vm,player);
-                    //vm.visit(player, gb.getTile(position.getFirst(), position.getSecond() - 1));
                     PlayTheRest(Myenemies);
                     break;
                 case 'd': //move right
                     gb.getTile(position.getFirst(), position.getSecond()+1).accept(vm,player);
-                    //vm.visit(player, gb.getTile(position.getFirst(), position.getSecond() + 1));
                     PlayTheRest(Myenemies);
                     break;
                 case 'e': //cast special ability
@@ -132,10 +132,6 @@ public class GameController {
         {
             o.Action(this.gb,player);
         }
-        //m.sendMessage(gb.PrintBoard());
-        //m.sendMessage(player.toString());
-
-
     }
 
     public boolean GameOver() {
@@ -143,5 +139,9 @@ public class GameController {
     }
 
 
+    public void EndGame() {
+        m.sendMessage(gb.StringBoard());
+        m.sendMessage("You lost.");
+    }
 }
 

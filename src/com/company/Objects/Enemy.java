@@ -1,13 +1,13 @@
-package com.company;
+package com.company.Objects;
 
-import java.util.HashMap;
-import java.util.List;
+import com.company.*;
+
 import java.util.Random;
 
 
 public class Enemy extends Unit {
     private int expValue;
-    public Enemy(char type, OurPair position,int exp, String name,int health, int attackPoints, int defensePoints)
+    public Enemy(char type, OurPair position, int exp, String name, int health, int attackPoints, int defensePoints)
     {
         super(type, position, name, health, attackPoints, defensePoints);
         this.expValue=exp;
@@ -19,9 +19,17 @@ public class Enemy extends Unit {
     public int getExpValue() {
         return expValue;
     }
+    public int getDefensePoints()
+    {
+        return defensePoints;
+    }
+    public String GetName()
+    {
+        return name;
+    }
 
     @Override
-    public void accept(VisitorMovement movementVisitor,Player player)
+    public void accept(VisitorMovement movementVisitor, Player player)
     {
         movementVisitor.visit(this,player);
     }
@@ -33,7 +41,7 @@ public class Enemy extends Unit {
     }
 
     @Override
-    public void attack(Enemy enemy, int hitpower,GameBoard gb) {
+    public void attack(Enemy enemy, int hitpower, GameBoard gb) {
 
     }
 
@@ -44,20 +52,20 @@ public class Enemy extends Unit {
 
     @Override
     public void attack(Player player,GameBoard gb) {
-        m.sendMessage(this.name+ " engaged in combat with "+player.name);
+        m.sendMessage(this.name+ " engaged in combat with "+player.getName());
         Random random=new Random();
         //player roll attack points
         int rollAttack=random.nextInt(this.attackPoints);
         m.sendMessage(this.name + " rolled "+rollAttack+" attack points");
         //enemy roll defense points
-        int rollDefense=random.nextInt(player.defensePoints);
-        m.sendMessage(player.name+ " rolled "+rollDefense+ " defense points" );
+        int rollDefense=random.nextInt(player.getDefencePoints());
+        m.sendMessage(player.getName()+ " rolled "+rollDefense+ " defense points" );
 
         int diff=rollAttack-rollDefense;
         if (diff>0)
         {
             m.sendMessage(this.name+" dealt "+diff+" damage to "+player.name);
-            player.health.setFirst(player.health.getFirst()-diff);
+            player.getHealth().setFirst(player.getHealth().getFirst()-diff);
             if (!player.isAlive())
             {
                 m.sendMessage(player.name+" was killed by "+this.name);

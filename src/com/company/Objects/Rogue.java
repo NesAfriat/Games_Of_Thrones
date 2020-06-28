@@ -1,8 +1,8 @@
-package com.company;
+package com.company.Objects;
+
+import com.company.OurPair;
 
 import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
 
 public class Rogue extends Player {
 
@@ -22,7 +22,7 @@ public class Rogue extends Player {
     }
 
     @Override
-    public void abilityCast(List<Enemy> enemies,GameBoard gb) {
+    public void abilityCast(List<Enemy> enemies, GameBoard gb) {
         if(energy.getFirst()<abilityCost)
             m.sendMessage(this.name+" tried to cast Fan of Knives, but there was not enough energy: "+energy.getFirst()+"/"+energy.getSecond());
         else {

@@ -1,7 +1,8 @@
 
-package com.company;
+package com.company.Objects;
 
-import java.util.Random;
+import com.company.Control.MessageHandler;
+import com.company.OurPair;
 
 public abstract class Unit extends Tile {
     protected String name;
@@ -23,9 +24,9 @@ public abstract class Unit extends Tile {
         return health.getFirst()>0;
     }
 
-   public abstract void attack (Enemy enemy,int hitpower,GameBoard gb);
+   public abstract void attack (Enemy enemy, int hitpower, GameBoard gb);
     public abstract void attack(Enemy enemy,GameBoard gb);
-   public abstract void attack (Player player,GameBoard gb);
+   public abstract void attack (Player player, GameBoard gb);
 
 
 }

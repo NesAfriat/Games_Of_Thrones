@@ -44,6 +44,8 @@ public class Mage extends Player {
     }
 
     @Override
+
+    //casting spacial ability if possible
     public void abilityCast(List<Enemy> enemies, GameBoard gb) {
         if (mana.getFirst() < manaCost)
             m.sendMessage(this.name+" tried to cast Blizzard but there was not enough mana: "+mana.getFirst()+"/"+mana.getSecond());
@@ -62,9 +64,10 @@ public class Mage extends Player {
 
         }
     }
+    //picking only enemies within abilityRange
     private LinkedList<Enemy> enemyInRange(List<Enemy> enemies)
     {
-        LinkedList<Enemy> releventEnemies=new LinkedList<>();//picking only enemies within abilityRange
+        LinkedList<Enemy> releventEnemies=new LinkedList<>();
         for (Enemy mo:enemies)
         {
             if (this.getPosition().Range(mo.getPosition())<abilityRange)
@@ -74,8 +77,8 @@ public class Mage extends Player {
         }
         return releventEnemies;
     }
-    
-    public String describe() {//player stats
+    //Providing player stats
+    public String describe() {
         return (this.name+ "     Health:"+health.getFirst()+"/"+health.getSecond()+"  Attack: "+attackPoints+"   Defense: "+defensePoints+"   Level: "+playerLevel+"    Experience: "+this.exp+"/"+50*playerLevel+"    Mana: "+mana.getFirst()+"/"+mana.getSecond()+"    Spell power: "+spellPower);
 
     }

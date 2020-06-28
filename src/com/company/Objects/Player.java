@@ -61,13 +61,10 @@ public abstract class Player extends Unit {
     public void accept(VisitorMovement movementVisitor, Enemy enemy) {
         movementVisitor.visit(this, enemy);
     }
-    //@Override
-    // public void accept (VisitorMovement movementVisitor,Tile tile)
-    //{
-    //  movementVisitor.visit(this,tile);
-    //}
 
-    public void attack(Enemy enemy, int hitPower, GameBoard gb) // player attacks,enemy defends
+    // player attacks,enemy defends. if enemy dies: switching positions,leveling up player if got enough exp.
+    //In this method we now what is the power/strength of attack
+    public void attack(Enemy enemy, int hitPower, GameBoard gb)
     {
         Random random = new Random();
         //player roll attack points
@@ -96,7 +93,8 @@ public abstract class Player extends Unit {
 
         }
     }
-
+    // player attacks,enemy defends. if enemydies: switching positions,leveling up player if got enough exp.
+    //This method is for combat - each side roll a number.
     public void attack(Enemy enemy, GameBoard gb) {
         m.sendMessage(this.name + " engaged in combat with " + enemy.name);
         m.sendMessage(this.describe());

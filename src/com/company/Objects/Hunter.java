@@ -37,7 +37,7 @@ public class Hunter extends Player {
 
 
 
-
+    //casting spacial ability if possible
     public void abilityCast(List<Enemy> enemies, GameBoard gb) {
         if (this.arrowsCount==0) {
             this.m.sendMessage(this.name + " tried to cast Shoot but there was not arrows ");
@@ -60,6 +60,7 @@ public class Hunter extends Player {
     }
 
 
+    //picking only enemies within abilityRange
 
     private LinkedList<Enemy> enemyInRange(List<Enemy> enemies) {//picking only enemies in range
         LinkedList<Enemy> releventEnemies = new LinkedList();

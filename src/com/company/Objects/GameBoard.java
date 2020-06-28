@@ -13,6 +13,9 @@ public class GameBoard {
         this.gameBoard = NextLevel(level);
     }
 
+    //"Translate" the char board we get to the objects each spot represent.
+    //Creating the list of enemies we need to kill to pass the level.
+
     protected Tile[][] NextLevel(char[][] nextlevel) {
         Tile[][] gameObjects = new Tile[nextlevel.length][nextlevel[0].length];
         Myenemies=new LinkedList<>();

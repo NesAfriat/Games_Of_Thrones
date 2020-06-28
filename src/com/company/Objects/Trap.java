@@ -18,6 +18,7 @@ public class Trap extends Enemy {
         this.visibilityTime=visibilityTime;
         }
    @Override
+   //switching from visible to invisible if needed. Also attack player if close enough.
     public void Action(GameBoard gb, Player player) {
         VisitorMovement vm= new VisitorMovement(gb);
         OurPair playerP= player.getPosition();

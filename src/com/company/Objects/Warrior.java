@@ -32,6 +32,7 @@ public class Warrior extends Player {
     }
 
     @Override
+    //casting spacial ability if possible
     public void abilityCast(List<Enemy> enemies, GameBoard gb) {
         if (cooldown.getFirst()>0)
             m.sendMessage(this.name+" tried to cast Avenger's sheild, but he's not cool enough: "+cooldown.getFirst()+"/"+cooldown.getSecond());

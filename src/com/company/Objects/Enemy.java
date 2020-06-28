@@ -51,6 +51,7 @@ public class Enemy extends Unit {
     }
 
     @Override
+    //Enemy attack,player defends. Each side roll a number.
     public void attack(Player player,GameBoard gb) {
         m.sendMessage(this.name+ " engaged in combat with "+player.getName());
         Random random=new Random();

@@ -11,6 +11,8 @@ public class Monster extends Enemy {
     }
 
     @Override
+    //checking if distance up/down is grater than distance right/left and according to that moves toward to the player.
+    //Using visitor movement to switch (or not) positions with the tile we are trying to step on.
     public void Action(GameBoard gb, Player player) {
         OurPair monsterP = this.getPosition();
         OurPair playerP= player.getPosition();
@@ -34,7 +36,7 @@ public class Monster extends Enemy {
         else
             MoveRandomly(vm,gb,monsterP);
     }
-
+    //For when player is out of vision range so we need to move in random direction.
     private void MoveRandomly(VisitorMovement vm, GameBoard gb,OurPair monsterP) {
         int move = (int)Math.floor(Math.random()* 5);
         switch (move) {

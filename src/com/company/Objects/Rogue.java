@@ -22,6 +22,7 @@ public class Rogue extends Player {
     }
 
     @Override
+    //casting spacial ability if possible
     public void abilityCast(List<Enemy> enemies, GameBoard gb) {
         if(energy.getFirst()<abilityCost)
             m.sendMessage(this.name+" tried to cast Fan of Knives, but there was not enough energy: "+energy.getFirst()+"/"+energy.getSecond());

@@ -2,29 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="65775d57-8932-4f84-a84a-0f9d9544fc1e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/company/Objects/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/Tests/Tests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Control/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Control/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Empty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Objects/Empty.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Objects/Enemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Objects/GameBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/GameController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Hunter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Objects/Hunter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Interactions.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Mage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Objects/Mage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/MessageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Control/MessageHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Objects/Monster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Control/MessageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Control/MessageHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Objects/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Objects/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Objects/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Objects/GameBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Objects/Hunter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Objects/Hunter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Objects/Mage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Objects/Mage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Objects/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Objects/Monster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Objects/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Objects/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Objects/Rogue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Objects/Rogue.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Objects/Trap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Objects/Trap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Player.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Rogue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Objects/Rogue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Tile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Objects/Tile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Trap.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Unit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Objects/Unit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Visitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/VisitorMovement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/VisitorMovement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Wall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Objects/Wall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Warrior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Objects/Warrior.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Objects/Warrior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Objects/Warrior.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

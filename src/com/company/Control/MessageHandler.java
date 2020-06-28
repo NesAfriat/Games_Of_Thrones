@@ -6,9 +6,4 @@ public class MessageHandler {
     {
         System.out.println(s);
     }
-    public static void sendMessage(char c)
-    {
-        System.out.println(c);
-    }
-
 }

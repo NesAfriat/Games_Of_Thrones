@@ -48,10 +48,10 @@ public class Enemy extends Unit {
         Random random=new Random();
         //player roll attack points
         int rollAttack=random.nextInt(this.attackPoints);
-        m.sendMessage(this.name + "rolled "+rollAttack+" attack points");
+        m.sendMessage(this.name + " rolled "+rollAttack+" attack points");
         //enemy roll defense points
         int rollDefense=random.nextInt(player.defensePoints);
-        m.sendMessage(player.name+ " rolled "+rollDefense+ "defense points" );
+        m.sendMessage(player.name+ " rolled "+rollDefense+ " defense points" );
 
         int diff=rollAttack-rollDefense;
         if (diff>0)

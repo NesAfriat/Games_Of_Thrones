@@ -57,7 +57,7 @@ public abstract class Player extends Unit {
         int rollAttack=hitPower;
         //enemy roll defense points
         int rollDefense=random.nextInt(enemy.defensePoints);
-        m.sendMessage(enemy.name+ " rolled "+rollDefense+ "defense points" );
+        m.sendMessage(enemy.name+ " rolled "+rollDefense+ " defense points" );
         int diff=rollAttack-rollDefense;
 
         if (diff>0)

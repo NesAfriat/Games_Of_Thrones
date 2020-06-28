@@ -19,7 +19,7 @@ public class Trap extends Enemy  {
    @Override
     public void Action(GameBoard gb,Player player) {
         VisitorMovement vm= new VisitorMovement(gb);
-        OurPair playerP= gb.getPlayerLoaction();
+        OurPair playerP= player.getPosition();
         OurPair trapP= this.getPosition();
         double range= Range(trapP,playerP);
         visible = tickCount< visibilityTime;
@@ -28,7 +28,7 @@ public class Trap extends Enemy  {
         else
             tickCount=tickCount+1;
         if(range<2) //attack player
-            attack(player,gb);
+            vm.visit(player,this);
     }
 
     private double Range(OurPair position, OurPair playerLocation) {

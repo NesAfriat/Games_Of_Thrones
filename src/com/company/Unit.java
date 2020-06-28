@@ -9,7 +9,7 @@ public abstract class Unit extends Tile {
     protected int attackPoints;
     protected int defensePoints;
     MessageHandler m;
- //   private final char DEADPLAYER= 'X';
+
     public Unit(char type, OurPair position,String name,int _health, int attackPoints, int defensePoints) {
         super(type, position);
         this.name= name;

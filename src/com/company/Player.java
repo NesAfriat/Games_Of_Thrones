@@ -44,11 +44,7 @@ public abstract class Player extends Unit {
     {
         movementVisitor.visit(this,enemy);
     }
-    //@Override
-   // public void accept (VisitorMovement movementVisitor,Tile tile)
-    //{
-      //  movementVisitor.visit(this,tile);
-    //}
+
 
     public void attack(Enemy enemy, int hitPower,GameBoard gb) // player attacks,enemy defends
     {
@@ -106,6 +102,8 @@ public abstract class Player extends Unit {
                 {
                     this.levelUp();
                 }
+                //putting . instead if enemy and replace the player with .
+
                 OurPair tmp=enemy.getPosition();
                 Tile e=new Empty(tmp);
                 OurPair playerp=this.getPosition();
@@ -114,11 +112,6 @@ public abstract class Player extends Unit {
                 this.setPosition(tmp);
                 gb.setTile(playerp,e);
                 gb.Myenemies.remove(enemy);
-
-
-
-
-
             }
         }
         else {

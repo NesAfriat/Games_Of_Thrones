@@ -15,10 +15,7 @@ public class Tile {
         this.position= position;
         m=new MessageHandler();
     }
-    //public String toString()
-    //{
-      //  return String.valueOf(this.tile);
-    //}
+
     public void setPosition(OurPair position)
     {
         this.position=position;

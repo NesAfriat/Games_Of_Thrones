@@ -13,13 +13,21 @@ public class GameController {
     GameBoard gb;
 
     public GameController(MessageHandler m){
-        choosePlayer();
         this.m=m;
+        choosePlayer();
+
     }
   private void choosePlayer()
     {
         Scanner scanner=new Scanner(System.in);
-        System.out.println("1-Jon snow\n 2-The hound\n 3-Melisandre\n 4-Thoros of Myr\n 5-Arya stark\n6-Bronn");
+        m.sendMessage("1.Jon Snow       Health:300/300    Attack:30    Defense:4     Level:1    Experience:0/50    Cooldown:0/3");
+        m.sendMessage("2.The hound      Health:400/400    Attack:20    Defense:6     Level:1    Experience:0/50    Cooldown:0/5");
+        m.sendMessage("3.Melisandre     Health:100/100    Attack:5     Defense:1     Level:1    Experience:0/50    Mana:75/300     Spell Power:15");
+        m.sendMessage("4.Thros of Myr   Health:250/250    Attack:25    Defense:4     Level:1    Experience:0/50    Mana:37/150     Spell Power:20");
+        m.sendMessage("5.Arya Stark     Health:150/150    Attack:40    Defense:2     Level:1    Experience:0/50    Energy:100/100");
+        m.sendMessage("6.Bronn          Health:250/250    Attack:35    Defense:3     Level:1    Experience:0/50    Energy:100/100");
+        m.sendMessage("7.Ygritte        Health:220/220    Attack:30    Defense:2     Level:1    Experience:0/50    Arrows:10        Range:6");
+
         Player res;
         int number=scanner.nextInt();
         switch (number){
@@ -53,6 +61,11 @@ public class GameController {
                 res=bronn;
                 this.player=res;
                 break;
+            case 7:
+                Hunter Ygritte= new Hunter('@', new OurPair(-1, -1), "Ygritte", 220, 30, 2, 10,6);
+                res = Ygritte;
+                this.player=res;
+                break;
         }
     }
     public void NewLevel(char[][] currentLevel) {
@@ -73,7 +86,7 @@ public class GameController {
         while(player.isAlive()&&!Myenemies.isEmpty())
         {
             m.sendMessage(gb.StringBoard());
-            m.sendMessage(player.describe());//TODO change to describe
+            m.sendMessage(player.describe());
             GameTick();
         }
     }
@@ -90,23 +103,18 @@ public class GameController {
             switch (move) {
                 case 'w':  //move up
                     gb.getTile(position.getFirst() - 1, position.getSecond()).accept(vm,player);
-                    //player.accept(vm,gb.getTile(position.getFirst() - 1, position.getSecond()));
-                    //vm.visit(player, gb.getTile(position.getFirst() - 1, position.getSecond()));
                     PlayTheRest(Myenemies);
                     break;
                 case 's': //move down
                     gb.getTile(position.getFirst() + 1, position.getSecond()).accept(vm,player);
-                   // vm.visit(player, gb.getTile(position.getFirst() + 1, position.getSecond()));
                     PlayTheRest(Myenemies);
                     break;
                 case 'a': //move left
                     gb.getTile(position.getFirst() , position.getSecond()-1).accept(vm,player);
-                    //vm.visit(player, gb.getTile(position.getFirst(), position.getSecond() - 1));
                     PlayTheRest(Myenemies);
                     break;
                 case 'd': //move right
                     gb.getTile(position.getFirst(), position.getSecond()+1).accept(vm,player);
-                    //vm.visit(player, gb.getTile(position.getFirst(), position.getSecond() + 1));
                     PlayTheRest(Myenemies);
                     break;
                 case 'e': //cast special ability
@@ -126,14 +134,13 @@ public class GameController {
     }
 
 
-    public void PlayTheRest(List<Enemy> Myenemies) {
+    public void PlayTheRest(List<Enemy> Myenemies) {//Enemy's turn to move and act
         player.onGameTick();
         for(Enemy o: Myenemies)
         {
             o.Action(this.gb,player);
         }
-        //m.sendMessage(gb.PrintBoard());
-        //m.sendMessage(player.toString());
+
 
 
     }

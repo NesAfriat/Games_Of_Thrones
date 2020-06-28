@@ -62,7 +62,7 @@ public class Mage extends Player {
     }
     private LinkedList<Enemy> enemyInRange(List<Enemy> enemies)
     {
-        LinkedList<Enemy> releventEnemies=new LinkedList<>();//only enemies within range 3
+        LinkedList<Enemy> releventEnemies=new LinkedList<>();//picking only enemies within abilityRange
         for (Enemy mo:enemies)
         {
             if (this.getPosition().Range(mo.getPosition())<abilityRange)

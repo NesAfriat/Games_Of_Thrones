@@ -31,7 +31,7 @@ public class Rogue extends Player {
             for (Enemy mo:enemies)
             {
 
-                if (this.getPosition().Range(mo.getPosition())<3)
+                if (this.getPosition().Range(mo.getPosition())<2)//checking if range is less than 2
                 {
                     this.attack(mo,attackPoints,gb);
                 }

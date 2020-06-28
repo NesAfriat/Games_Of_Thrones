@@ -18,6 +18,7 @@ public class GameBoard {
         Myenemies=new LinkedList<>();
         Tile tmp;
         Enemy e;
+        //reading the level and creating the tiles by sign
         for (int i = 0; i < nextlevel.length; i++)
             for (int j = 0; j < nextlevel[i].length; j++) {
                 char sign = nextlevel[i][j];

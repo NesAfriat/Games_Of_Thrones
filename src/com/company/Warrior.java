@@ -38,7 +38,7 @@ public class Warrior extends Player {
             cooldown.setFirst(cooldown.getSecond());
             health.setFirst(Math.min(health.getFirst()+(10*defensePoints),health.getSecond()));
 
-            LinkedList<Enemy> releventEnemies=new LinkedList<>();//only enemies within range 3
+            LinkedList<Enemy> releventEnemies=new LinkedList<>();//picking only enemies within range 3
             for (Enemy mo:enemies)
             {
                 if (this.getPosition().Range(mo.getPosition())<3)
